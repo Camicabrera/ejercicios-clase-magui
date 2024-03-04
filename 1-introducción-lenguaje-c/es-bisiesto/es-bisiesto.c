@@ -1,10 +1,11 @@
- #include <stdio.h>
+#include <stdio.h>
+#include <stdbool.h>
 
-int esBisiesto(int anio) {
-   return 1;
+bool esBisiesto(int anio) {
+   return (anio % 4 == 0 && anio % 100 != 0)||(anio % 400== 0);
 }
 
-void realizarPrueba(int anio, int esperado) {
+void realizarPrueba(int anio, bool esperado) {
     int resultado = esBisiesto(anio);
     
     printf("Prueba para el año %d: ", anio);
@@ -17,11 +18,11 @@ void realizarPrueba(int anio, int esperado) {
 }
 
 int main() {
-    realizarPrueba(2000, 1); 
-    realizarPrueba(2021, 0);  
-    realizarPrueba(2100, 0);  
-    realizarPrueba(2400, 1); 
-    realizarPrueba(2024, 1); 
+    realizarPrueba(2000, true); 
+    realizarPrueba(2021, false);  
+    realizarPrueba(2100, false);  
+    realizarPrueba(2400, true); 
+    realizarPrueba(2024, true); 
 
     return 0;
 }

@@ -3,7 +3,7 @@
 // Una que determina si un número es par
 
 int esPar(int numero) {
-    return 0;
+    return numero%2 == 0;
 }
 
 int main() {
