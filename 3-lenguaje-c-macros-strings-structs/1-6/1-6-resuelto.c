@@ -13,13 +13,12 @@ Persona* inicializarPersonasMalloc(int n) {
     if (personas == NULL) {
         // Manejo de error: no se pudo asignar memoria
         fprintf(stderr, "Error al asignar memoria\n");
-        exit(EXIT_FAILURE);
+        return NULL;
     }
 
-    // Inicializar cada elemento del arreglo
     for (int i = 0; i < n; i++) {
-        personas[i].edad = 0;  // Puedes inicializar la edad con un valor específico si lo deseas
-        personas[i].nombre = NULL;  // Inicializar el nombre como NULL
+        personas[i].edad = 0;
+        personas[i].nombre = NULL;
     }
 
     return personas;
@@ -32,22 +31,22 @@ Persona* inicializarPersonasCalloc(int n) {
     if (personas == NULL) {
         // Manejo de error: no se pudo asignar memoria
         fprintf(stderr, "Error al asignar memoria\n");
-        exit(EXIT_FAILURE);
+        return NULL;
     }
 
     return personas;
 }
 
 int main() {
-    int n = 5;  // Puedes ajustar el tamaño del arreglo según tus necesidades
+    int n = 5;
 
-    // Ejemplo de uso con malloc
     Persona* personasMalloc = inicializarPersonasMalloc(n);
+    if(!personasMalloc) return 1;
 
-    // Ejemplo de uso con calloc
     Persona* personasCalloc = inicializarPersonasCalloc(n);
+    if(!personasCalloc) return 1;
 
-    // Liberar la memoria asignada
+
     free(personasMalloc);
     free(personasCalloc);
 

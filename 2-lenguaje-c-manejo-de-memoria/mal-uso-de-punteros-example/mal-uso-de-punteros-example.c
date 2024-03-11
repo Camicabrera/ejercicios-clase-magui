@@ -2,12 +2,13 @@
 
 
 /* 
-* EJEMPLO 1
-* Intentar acceder al valor apuntado por un puntero no inicializado
-*/
+// * EJEMPLO 1
+// * Intentar acceder al valor apuntado por un puntero no inicializado
+// */
 int main() {
     int *ptr;
-    *ptr = 10;
+    ptr = (int*)10;
+    printf("%p", ptr);
     return 0;
 }
 

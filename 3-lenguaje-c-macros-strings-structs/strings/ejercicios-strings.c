@@ -5,7 +5,16 @@
 #include <stdlib.h>
 
 void ejercicio(const char *buffer, unsigned long len){
-    printf("%s",buffer);
+    int palabras = 0;
+    printf("el largo recibido es: %lu \n", len);
+    for(int i = 0; i <= len; i++) {
+      if(buffer[i] == ' ' || buffer[i] == '\0') {
+        palabras += 1;
+      }
+      if(buffer[i] == '\0' || (buffer[i+1] == '\0' && buffer[i] == ' ' )) break;
+    }
+
+    printf("la cantidad de palabras es: %d\n",palabras);
 }
 
 int main(int argc, char **argv) {

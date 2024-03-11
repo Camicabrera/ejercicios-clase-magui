@@ -5,5 +5,5 @@ local:
 
 docker:
 	docker build --tag example .
-	docker run -v "$(CURDIR)":/null-pointer-exception-example
+	docker run -v "$(CURDIR)":/null-pointer-exception-example example
 	docker rmi example 

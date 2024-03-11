@@ -1,12 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void crearArreglo(int v) {
-   // TODO:
+void crearArreglo(int v, int a[], int* b) {
+  
+    *b = v;
+
+    for (int i = 0; i < 8; i++) {
+        a[i] = v;
+    }
+
 }
 
 int* crearArregloDin(int n, int v) {
-    // TODO:
+   int * a = malloc(sizeof(int)*n);
+   for (int i = 0; i < n; i++) {
+        *(a+i) = v;
+    } 
+
+    return a;
 }
 
 void mostrarMemoria(int* arr, int size) {
@@ -17,7 +28,15 @@ void mostrarMemoria(int* arr, int size) {
 
 int main() {
     printf("Ejemplo 1:\n");
-    crearArreglo(5);
+    int a[8];
+    int b = 2;
+    crearArreglo(5, a, &b);
+
+    printf("%d", b);
+
+    for (int i = 0; i < 8; i++) {
+        printf("%d",  a[i]);
+    }
 
     printf("\nEjemplo 2:\n");
     int* arregloDinamico = crearArregloDin(6, 8);
@@ -25,5 +44,6 @@ int main() {
 
     free(arregloDinamico);
 
+    free(arregloDinamico);
     return 0;
 }
