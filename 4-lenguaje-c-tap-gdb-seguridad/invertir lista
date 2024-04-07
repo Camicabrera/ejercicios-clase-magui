@@ -1,0 +1,19 @@
+void swap (void* origin, void* destiny ) {
+    struct nodo aux = *origin;
+    *origin = *destiny;
+    *destiny = aux;
+}
+
+
+void invertir_lista(ListaD* l) {
+    if(!l.cantidad || l.cantidad == 1) return;
+
+    struct nodo* actual = l->head->next;
+
+    while(actual->next) {
+        swap(actual->prev, actual->next);
+        actual = actual->prev;
+    }
+    
+    swap(l->head, l->tail);
+}
