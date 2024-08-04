@@ -27,7 +27,7 @@ class Graph:
         if not vertex1 in self._graph or not vertex2 in self._graph:
             raise ValueError("The vertexes do not exist")
         self._graph[vertex1]['neighbors'][vertex2] = data
-        # self._graph[vertex2]['neighbors'][vertex1] = data
+        self._graph[vertex2]['neighbors'][vertex1] = data
 
 
     def get_neighbors(self, vertex) -> List[str]:
@@ -109,7 +109,15 @@ def bfs(graph: Graph, start_vertex: str) -> List[str]:
     :param start_vertex: The starting vertex
     :return: A list of vertices in the order they were visited
     """
-    pass
+    queue = [start_vertex]
+    visitados = []
+    while queue:
+        vertice = queue.pop(0)
+        if vertice not in visitados:
+            visitados.append(vertice)
+            for vecino in graph.get_neighbors(vertice):
+                queue.append(vecino)
+    return visitados
 
 def dfs(graph: Graph, start_vertex: str) -> List[str]:
     """
@@ -118,7 +126,15 @@ def dfs(graph: Graph, start_vertex: str) -> List[str]:
     :param start_vertex: The starting vertex
     :return: A list of vertices in the order they were visited
     """
-    pass
+    queue = [start_vertex]
+    visitados = []
+    while queue:
+        vertice = queue.pop()
+        if vertice not in visitados:
+            visitados.append(vertice)
+            for vecino in graph.get_neighbors(vertice):
+                queue.append(vecino)
+    return visitados
 
 # Inicializar el grafo con los vértices y aristas de la imagen 2
 graph2 = Graph()
@@ -159,7 +175,24 @@ def shortest_path_bfs(graph: Graph, start: str, end: str) -> List[str]:
     :param end: El nodo de destino
     :return: Una lista de nodos en el camino más corto o un mensaje si no existe un camino
     """
-    pass
+    visited = []
+    queue = [[start]]
+    if start == end:
+        return [start]
+    while queue:
+        path = queue.pop(0)
+        node = path[-1]
+        if node not in visited:
+            neighbors = graph.get_neighbors(node)
+            for neighbor in neighbors:
+                new_path = list(path)
+                new_path.append(neighbor)
+                queue.append(new_path)
+                if neighbor == end:
+                    return new_path
+            visited.append(node)
+    return "No existe un camino entre los nodos especificados"
+
 
 
 

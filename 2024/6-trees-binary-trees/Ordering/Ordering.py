@@ -1,17 +1,25 @@
 from Tree import BinaryTree, Node
 
 def visitTreeInOrder(node, fn):
-    # TODO
-    return
+    if node is None:
+        return
+    visitTreeInOrder(node.getLeftTree(),fn)
+    fn(node.getValue())
+    visitTreeInOrder(node.getRightTree(),fn)
 
 def visitTreePostOrder(node, fn):
-    # TODO
-    return
-
+    if node is None:
+        return
+    visitTreePostOrder(node.getLeftTree(),fn)
+    visitTreePostOrder(node.getRightTree(),fn)
+    fn(node.getValue())
 
 def visitTreePreOrder(node, fn):
-    # TODO
-    return
+    if node is None:
+        return
+    fn(node.getValue())
+    visitTreePreOrder(node.getLeftTree(),fn)
+    visitTreePreOrder(node.getRightTree(),fn)
 
 
 root = Node(1)

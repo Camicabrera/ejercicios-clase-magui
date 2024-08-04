@@ -1,12 +1,17 @@
 from Tree import BinaryTree, Node
 
-def sum(root):
-    # TODO;
-    return 1
+def sum(node):
+    if node is None:
+        return 0
+    return node.getValue() + sum(node.getLeftTree()) + sum(node.getRightTree())
 
-def isSumTree(root):
-    # TODO;
-    return 1
+def isSumTree(node):
+    if node is None or (node.getLeftTree() is None and node.getRightTree()):
+        return True
+    left_sum = sum(node.getLeftTree())
+    right_sum = sum(node.getRightTree())
+
+    return node.getValue() == left_sum + right_sum and isSumTree(node.getRightTree()) and isSumTree(node.getLeftTree())
     
 root = Node(1)
 node_2 = Node(2)

@@ -1,12 +1,16 @@
+from ast import Return
 from Tree import BinaryTree, Node
 
 def isLeaf(node):
-    # TODO
-    return False
+    return node.getLeftTree() is None and node.getRigthTree() is None
 
 def ejericioII(node):
-    # TODO
-    return
+    if node is None:
+        return
+    ejericioII(node.getLeftTree(node))
+    if isLeaf():
+        print(node.getValue())
+    ejericioII(node.getRightTree(node))
 
 
 
