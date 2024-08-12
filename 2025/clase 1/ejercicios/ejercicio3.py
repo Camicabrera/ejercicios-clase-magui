@@ -11,11 +11,7 @@ def find_first_occurrence(arr, element):
     :return: int - The position of the first occurrence, or -1 if not found
     """
     # Implement the algorithm to find the first occurrence here
-    result = -1
-    for pos in range(len(arr)):
-       if element == arr[pos]:
-            result = pos
-    return result
+    pass
 
 # Test Cases
 def test_find_first_occurrence():

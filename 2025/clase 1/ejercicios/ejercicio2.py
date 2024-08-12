@@ -1,8 +1,5 @@
 # Find All Occurrences of an Element in an Array
 
-from traceback import format_exception_only
-
-
 def find_all_occurrences(arr, element):
     """
     Finds all positions of an element in an array of strings.
@@ -12,11 +9,8 @@ def find_all_occurrences(arr, element):
     :return: List[int] - A list of positions where the element is found
     """
     # Implement the algorithm to find all occurrences here
-    lista = []
-    for index, i  in enumerate(arr):
-        if i == element:
-            lista.append(index)
-    return lista
+    pass
+
 # Test Cases
 def test_find_all_occurrences():
     test_cases = [

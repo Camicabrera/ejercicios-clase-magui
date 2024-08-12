@@ -7,24 +7,8 @@ def count_word_frequency(sentence):
     :return: dict - A dictionary with words as keys and their frequencies as values
     """
     # Implement the algorithm to count word frequencies here
-    bandera1 = 0
-    dicc = {}
-    for num in range(len(sentence)):
-        if sentence[num] == " " :
-            if sentence[bandera1:num] in dicc:
-                dicc[sentence[bandera1:num]] += 1
-                bandera1 = num + 1
-            else: 
-                dicc[sentence[bandera1:num]] = 1
-                bandera1 = num + 1
-        elif num == len(sentence) - 1:
-            if sentence[bandera1:num + 1] in dicc:
-                dicc[sentence[bandera1:num + 1]] += 1
-            else: 
-                dicc[sentence[bandera1:num + 1]] = 1
-    return dicc
-               
- 
+    pass
+
 # Test Cases
 def test_count_word_frequency():
     test_cases = [
