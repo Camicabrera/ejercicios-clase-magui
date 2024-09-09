@@ -11,15 +11,40 @@ typedef struct {
 } Heap;
 
 void insert_heap(Heap* heap, int value) {
-    // TODO
+    if(heap->capacity < heap->size - 1) {
+        heap->data = (int *) realloc(heap->data, heap->capacity*2*sizeof(int));
+        if(heap->data == NULL) {
+            fprintf(stderr, "Error: no se pudo asignar memoria para el heap.\n");
+            return;
+        }
+        heap->capacity *= 2;
+    }
+        heap->data[heap->size] = value;
+        heapify_up(heap, heap->size);
+        heap->size ++;
 }
 
 int extract_top(Heap* heap) {
     // TODO
+    if(!heap->size) return NULL;
+
+    swap(&heap->data[0], &heap->data[heap->size-1]);
+
+    int top = heap->data[heap->size-1];
+    heap->size --;
+
+    heapfy_down(heap, 0);
+
+    return top;
 }
 
 void heapify_up(Heap* heap, int index) {
-    // TODO
+    if(index == 1 || compare(heap, index, index / 2)) {
+        return;
+    }
+
+    swap(&heap->data[index/2],&heap->data[index]);
+    heapify_up(heap, index/2);
 }
 
 void swap(int* a, int* b) {

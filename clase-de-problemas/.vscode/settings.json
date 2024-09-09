@@ -2,6 +2,13 @@
     "files.associations": {
         "stdio.h": "c",
         "eventlist.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "__split_buffer": "c",
+        "array": "c",
+        "bitset": "c",
+        "initializer_list": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c"
     }
 }
