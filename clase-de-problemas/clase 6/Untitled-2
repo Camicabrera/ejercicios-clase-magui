@@ -1,0 +1,28 @@
+
+
+struct nodo {
+    int key;
+    int value:
+    node_t * izq;
+    node_t * der; 
+    node_t * arriba;
+    node_t * abajo;
+} typedef nodo_t
+
+struct list {
+    node_t* nivel_0;
+    node_t* nivel_1;
+    node_t* nivel_2;
+} typedef list_t
+
+
+bool existe(list_t * lista, int elemento) {
+    
+  if(lista->nivel_0 -> value == elemento) return true;
+  if(lista-> nivel_0-> value)
+   
+       
+    
+    
+
+}

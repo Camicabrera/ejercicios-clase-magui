@@ -1,16 +1,23 @@
 from Tree import BinaryTree, Node
 
 def visit_tree_in_order(node: Node, fn):
-    # TODO
-    return
+    if(node == None): return
+    visit_tree_in_order(node.get_left_tree(), fn)
+    fn(node.get_value())
+    visit_tree_in_order(node.get_right_tree(), fn)
+
 
 def visit_tree_in_post_order(node: Node, fn):
-    # TODO
-    return
+    if(node == None): return
+    visit_tree_in_post_order(node.get_left_tree(), fn)
+    visit_tree_in_post_order(node.get_right_tree(), fn)
+    fn(node.get_value())
 
 def visit_tree_in_pre_order(node: Node, fn):
-    # TODO
-    return
+    if(node == None): return
+    fn(node.get_value())
+    visit_tree_in_pre_order(node.get_left_tree(), fn)
+    visit_tree_in_pre_order(node.get_right_tree(), fn)
 
 
 root = Node(1)
