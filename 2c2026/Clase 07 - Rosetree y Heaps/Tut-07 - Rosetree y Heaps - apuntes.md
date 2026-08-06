@@ -1,6 +1,9 @@
 Tut 07 – Rosetree y Heaps
 ===
 
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **2C 2026** · Docente: **Magali Marijuan**
+
 - [Tut 07 – Rosetree y Heaps](#tut-07--rosetree-y-heaps)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [Rosetree (árbol n-ario)](#rosetree-árbol-n-ario)

@@ -1,6 +1,9 @@
 Tut 01 – Introducción a C++
 ===
 
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **2C 2026** · Docente: **Magali Marijuan**
+
 - [Tut 01 – Introducción a C++](#tut-01--introducción-a-c)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [¿Por qué C++?](#por-qué-c)

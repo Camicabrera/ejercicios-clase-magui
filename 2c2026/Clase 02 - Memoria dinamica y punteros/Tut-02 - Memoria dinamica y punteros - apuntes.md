@@ -1,6 +1,9 @@
 Tut 02 – Memoria dinámica y punteros
 ===
 
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **2C 2026** · Docente: **Magali Marijuan**
+
 - [Tut 02 – Memoria dinámica y punteros](#tut-02--memoria-dinámica-y-punteros)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [Los tres tipos de memoria](#los-tres-tipos-de-memoria)

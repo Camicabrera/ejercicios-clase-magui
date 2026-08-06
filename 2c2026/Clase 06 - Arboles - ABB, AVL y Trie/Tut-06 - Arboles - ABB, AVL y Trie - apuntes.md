@@ -1,6 +1,9 @@
 Tutorial 6 – Árboles: ABB, AVL y Trie
 ===
 
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **2C 2026** · Docente: **Magali Marijuan**
+
 - [Tutorial 6 – Árboles: ABB, AVL y Trie](#tutorial-6--árboles-abb-avl-y-trie)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [Árboles binarios](#árboles-binarios)

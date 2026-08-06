@@ -1,6 +1,9 @@
 Tut 10 – Grafos II: AGM, caminos mínimos y flujo
 ===
 
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **2C 2026** · Docente: **Magali Marijuan**
+
 - [Tut 10 – Grafos II: AGM, caminos mínimos y flujo](#tut-10--grafos-ii-agm-caminos-mínimos-y-flujo)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [Árbol Generador Mínimo (AGM)](#árbol-generador-mínimo-agm)
