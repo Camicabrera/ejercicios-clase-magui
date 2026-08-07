@@ -2,7 +2,7 @@ Tut 08 – Hashing
 ===
 
 > **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
-> **2C 2026** · Docente: **Magali Marijuan**
+> **2C 2026** · Docente: **Ing. Magali Marijuan**
 
 - [Tut 08 – Hashing](#tut-08--hashing)
 - [Objetivos de la clase](#objetivos-de-la-clase)

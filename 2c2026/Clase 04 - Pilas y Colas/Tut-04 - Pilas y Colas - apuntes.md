@@ -2,7 +2,7 @@ Tutorial 4 – Pilas y Colas
 ===
 
 > **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
-> **2C 2026** · Docente: **Magali Marijuan**
+> **2C 2026** · Docente: **Ing. Magali Marijuan**
 
 - [Tutorial 4 – Pilas y Colas](#tutorial-4--pilas-y-colas)
 - [Objetivos de la clase](#objetivos-de-la-clase)

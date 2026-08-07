@@ -1,6 +1,6 @@
 // ============================================================================
 // Ingeniería en Inteligencia Artificial - Algoritmos y Estructura de Datos
-// 2C 2026 | Docente: Magali Marijuan
+// 2C 2026 | Docente: Ing. Magali Marijuan
 // ============================================================================
 
 #include "ejercicios.h"

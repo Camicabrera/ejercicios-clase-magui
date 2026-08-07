@@ -2,7 +2,7 @@ Tutorial 5 – Ordenamiento, búsqueda y Divide & Conquer
 ===
 
 > **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
-> **2C 2026** · Docente: **Magali Marijuan**
+> **2C 2026** · Docente: **Ing. Magali Marijuan**
 
 - [Tutorial 5 – Ordenamiento, búsqueda y Divide & Conquer](#tutorial-5--ordenamiento-búsqueda-y-divide--conquer)
 - [Objetivos de la clase](#objetivos-de-la-clase)

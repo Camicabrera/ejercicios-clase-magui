@@ -2,7 +2,7 @@ Tut 12 – Programación dinámica y NP
 ===
 
 > **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
-> **2C 2026** · Docente: **Magali Marijuan**
+> **2C 2026** · Docente: **Ing. Magali Marijuan**
 
 - [Tut 12 – Programación dinámica y NP](#tut-12--programación-dinámica-y-np)
 - [Objetivos de la clase](#objetivos-de-la-clase)

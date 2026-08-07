@@ -2,7 +2,7 @@ Tut 09 – Grafos I: Representación y recorridos
 ===
 
 > **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
-> **2C 2026** · Docente: **Magali Marijuan**
+> **2C 2026** · Docente: **Ing. Magali Marijuan**
 
 - [Tut 09 – Grafos I: Representación y recorridos](#tut-09--grafos-i-representación-y-recorridos)
 - [Objetivos de la clase](#objetivos-de-la-clase)

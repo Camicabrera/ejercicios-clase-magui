@@ -1,7 +1,7 @@
 # Ejercicios - Tut 01 (Introducción a C++)
 
 > **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
-> **2C 2026** · Docente: **Magali Marijuan**
+> **2C 2026** · Docente: **Ing. Magali Marijuan**
 
 Cáscara para resolver los ejercicios de la primera clase.
 

@@ -2,7 +2,7 @@ Tutorial 3 – Listas enlazadas e iteradores
 ===
 
 > **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
-> **2C 2026** · Docente: **Magali Marijuan**
+> **2C 2026** · Docente: **Ing. Magali Marijuan**
 
 - [Tutorial 3 – Listas enlazadas e iteradores](#tutorial-3--listas-enlazadas-e-iteradores)
 - [Objetivos de la clase](#objetivos-de-la-clase)
