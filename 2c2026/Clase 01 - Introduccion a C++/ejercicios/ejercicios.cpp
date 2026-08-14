@@ -116,3 +116,51 @@ int contarPalabras(const std::string &oracion) {
     (void)oracion;
     return 0;
 }
+
+
+// Ejercicio 10 — Clase Punto
+Punto::Punto(double xInicial, double yInicial)
+{
+    // TODO: inicializar x e y con los valores recibidos.
+    (void)xInicial;
+    (void)yInicial;
+}
+
+double Punto::distanciaAlOrigen() const
+{
+    // TODO: devolver la distancia entre este punto y el origen (0, 0).
+    return 0.0;
+}
+
+double Punto::distanciaA(const Punto &otro) const
+{
+    // TODO: devolver la distancia entre este punto y "otro".
+    (void)otro;
+    return 0.0;
+}
+
+// Ejercicio 11 — Clase Rectangulo
+Rectangulo::Rectangulo(double baseInicial, double alturaInicial)
+{
+    // TODO: inicializar base y altura con los valores recibidos.
+    (void)baseInicial;
+    (void)alturaInicial;
+}
+
+double Rectangulo::area() const
+{
+    // TODO: devolver el área del rectángulo (base * altura).
+    return 0.0;
+}
+
+double Rectangulo::perimetro() const
+{
+    // TODO: devolver el perímetro del rectángulo (2 * (base + altura)).
+    return 0.0;
+}
+
+bool Rectangulo::esCuadrado() const
+{
+    // TODO: devolver true si el rectángulo es un cuadrado (base == altura).
+    return false;
+}
