@@ -1,8 +1,3 @@
-// ============================================================================
-// Ingeniería en Inteligencia Artificial - Algoritmos y Estructura de Datos
-// 2C 2026 | Docente: Ing. Magali Marijuan
-// ============================================================================
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,22 +19,28 @@
 static int totalPruebas = 0;
 static int pruebasOk = 0;
 
-static void chequear(const std::string &nombre, bool condicion) {
+static void chequear(const std::string &nombre, bool condicion)
+{
     totalPruebas++;
-    if (condicion) {
+    if (condicion)
+    {
         pruebasOk++;
         std::cout << "[PASA]  " << nombre << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << "[FALLA] " << nombre << std::endl;
     }
 }
 
 // Comparación de doubles con tolerancia (evita problemas de redondeo).
-static bool casiIgual(double a, double b) {
+static bool casiIgual(double a, double b)
+{
     return std::fabs(a - b) < 1e-9;
 }
 
-int main() {
+int main()
+{
     // Ejercicio 1
     chequear("Ej1 - saludo", saludo("Ada", 21) == "Hola Ada, tenes 21 anios.");
 
@@ -86,6 +87,22 @@ int main() {
 
     // Propuesto 2
     chequear("P2  - contarPalabras", contarPalabras("hola que tal") == 3);
+
+    // Ejercicio 10 — Clase Punto
+    Punto p(3.0, 4.0);
+    chequear("Ej10 - Punto::distanciaAlOrigen", casiIgual(p.distanciaAlOrigen(), 5.0));
+
+    Punto origen(0.0, 0.0);
+    chequear("Ej10 - Punto::distanciaA", casiIgual(p.distanciaA(origen), 5.0));
+
+    // Ejercicio 11 — Clase Rectangulo
+    Rectangulo r(4.0, 5.0);
+    chequear("Ej11 - Rectangulo::area", casiIgual(r.area(), 20.0));
+    chequear("Ej11 - Rectangulo::perimetro", casiIgual(r.perimetro(), 18.0));
+    chequear("Ej11 - Rectangulo::esCuadrado(no)", !r.esCuadrado());
+
+    Rectangulo cuadrado(3.0, 3.0);
+    chequear("Ej11 - Rectangulo::esCuadrado(si)", cuadrado.esCuadrado());
 
     std::cout << "\nResultado: " << pruebasOk << "/" << totalPruebas
               << " pruebas pasadas." << std::endl;
