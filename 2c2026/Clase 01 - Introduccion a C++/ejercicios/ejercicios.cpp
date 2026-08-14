@@ -20,15 +20,21 @@ std::string saludo(const std::string &nombre, int edad) {
     // TODO: armar y devolver el saludo con el formato pedido.
     (void)nombre;
     (void)edad;
-    return "";
+    return "Hola " + nombre + ", tenes " + std::to_string(edad) + " anios.";
 }
+
 
 
 // Ejercicio 2 — Par o impar
 bool esPar(int numero) {
     // TODO: devolver true si numero es par.
     (void)numero;
-    return false;
+    if (numero%2 == 0){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 
@@ -36,7 +42,7 @@ bool esPar(int numero) {
 std::vector<int> tablaDeMultiplicar(int n) {
     // TODO: llenar el vector con n*1, n*2, ..., n*10 y devolverlo.
     (void)n;
-    return {};
+    return {n*1,n*2,n*3,n*4,n*5,n*6,n*7,n*8,n*9,n*10};
 }
 
 
@@ -44,7 +50,15 @@ std::vector<int> tablaDeMultiplicar(int n) {
 bool esPrimo(int n) {
     // TODO: determinar si n es primo.
     (void)n;
+    if (n <= 1) {
     return false;
+    }
+    for (int i=2;i<n-1;i++){
+        if (n%i==0){
+            return false;
+        }
+    }
+    return true;
 }
 
 
@@ -53,6 +67,11 @@ void swap(int &a, int &b) {
     // TODO: intercambiar los valores de a y b.
     (void)a;
     (void)b;
+
+    int extra =a;
+    a=b;
+    b= extra;
+
 }
 
 
@@ -61,14 +80,22 @@ int maximo(int a, int b) {
     // TODO: devolver el mayor entre a y b.
     (void)a;
     (void)b;
-    return 0;
+    if (a>b){
+        return a;
+    }
+    return b;
 }
 
 double maximo(double a, double b) {
     // TODO: devolver el mayor entre a y b.
     (void)a;
     (void)b;
-    return 0.0;
+    if (a>b){
+        return a;
+    }
+    return b;
+
+
 }
 
 
@@ -77,7 +104,12 @@ double promedioArreglo(const int numeros[], int tamanio) {
     // TODO: sumar los elementos y dividir por tamanio (ojo con la división entera).
     (void)numeros;
     (void)tamanio;
-    return 0.0;
+    double cuenta=0.0;
+        for (int i=0;i<tamanio;i++){
+        cuenta += numeros[i];
+    }
+    return (double) cuenta/tamanio;
+
 }
 
 
@@ -85,13 +117,29 @@ double promedioArreglo(const int numeros[], int tamanio) {
 double promedio(const std::vector<double> &notas) {
     // TODO: devolver el promedio de las notas.
     (void)notas;
-    return 0.0;
+    double suma=0;
+    double largo= (double) notas.size(); 
+
+    for (int i=0; i< largo;i++){
+        suma+=notas[i];
+    }
+
+    double resultado= suma/largo;
+    return resultado;
 }
 
 double maxima(const std::vector<double> &notas) {
     // TODO: devolver la nota más alta.
     (void)notas;
-    return 0.0;
+    double maxima=0.0;
+    double largo= (double) notas.size();
+    for (int i=0; i<largo;i++){
+        if (notas[i] > maxima){
+            maxima= notas[i];
+        }
+    }
+    return maxima;
+
 }
 
 
@@ -99,7 +147,28 @@ double maxima(const std::vector<double> &notas) {
 int contarVocales(const std::string &texto) {
     // TODO: contar vocales sin distinguir mayúsculas de minúsculas.
     (void)texto;
-    return 0;
+    int suma=0;
+    int largo=(int)texto.size();
+    for (int i=0;i<largo;i++){
+        if (texto[i]=='A' || texto[i]=='a'){
+            suma ++;
+        }
+        else if (texto[i]=='E' || texto[i]=='e'){
+            suma ++;
+        }
+        else if (texto[i]=='I' || texto[i]=='i'){
+            suma ++;
+        }
+        else if (texto[i]=='O' || texto[i]=='o'){
+            suma ++;
+        }
+        else if (texto[i]=='U' || texto[i]=='u'){
+            suma ++;
+        }
+    }
+    
+    
+    return suma;
 }
 
 
@@ -107,6 +176,16 @@ int contarVocales(const std::string &texto) {
 void invertir(std::vector<int> &v) {
     // TODO: invertir el orden de los elementos sin crear otro vector.
     (void)v;
+    size_t i=0;
+    size_t j=v.size()-1;
+    while (i<j){
+        int intermedio= v[i];
+        v[i]=v[j];
+        v[j]=intermedio;
+
+        i++;
+        j--;
+    }
 }
 
 
@@ -114,7 +193,18 @@ void invertir(std::vector<int> &v) {
 int contarPalabras(const std::string &oracion) {
     // TODO: contar palabras separadas por un único espacio.
     (void)oracion;
-    return 0;
+    int fin= (int)oracion.size();
+    int palabras=0;
+
+    for (int i=0; i<=fin;i++){
+        if (i==fin){
+            palabras ++;
+        }
+        else if (oracion[i]==' '){
+            palabras++;
+        }
+    }
+    return palabras;
 }
 
 
@@ -124,11 +214,15 @@ Punto::Punto(double xInicial, double yInicial)
     // TODO: inicializar x e y con los valores recibidos.
     (void)xInicial;
     (void)yInicial;
+    x = xInicial;
+    y= yInicial;
+
 }
 
 double Punto::distanciaAlOrigen() const
 {
     // TODO: devolver la distancia entre este punto y el origen (0, 0).
+    
     return 0.0;
 }
 
