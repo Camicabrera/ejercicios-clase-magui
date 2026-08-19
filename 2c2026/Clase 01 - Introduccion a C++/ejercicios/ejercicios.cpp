@@ -230,6 +230,7 @@ double Punto::distanciaA(const Punto &otro) const
 {
     // TODO: devolver la distancia entre este punto y "otro".
     (void)otro;
+
     return 0.0;
 }
 

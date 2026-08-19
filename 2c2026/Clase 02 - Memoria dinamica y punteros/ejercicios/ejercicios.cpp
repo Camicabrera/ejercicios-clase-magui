@@ -14,6 +14,7 @@ void duplicarPuntero(int *x)
 {
     // TODO: duplicar el valor apuntado por x.
     (void)x;
+    x=&x;
 }
 
 // Ejercicio 2 — Puntero vs referencia
