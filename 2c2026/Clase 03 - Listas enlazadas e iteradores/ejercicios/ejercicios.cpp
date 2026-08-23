@@ -20,10 +20,17 @@ ListaSimple::ListaSimple()
 // Destructor: libera todos los nodos
 ListaSimple::~ListaSimple()
 {
+
     // TODO: recorrer la lista y liberar cada nodo con delete.
     // Recordá guardar el puntero al siguiente ANTES de hacer delete del actual.
     // Al final, primero, ultimo y largo deberían quedar en su estado inicial
     // (aunque técnicamente no importa porque el objeto se destruye).
+   Nodo* actual= primero;
+    while (actual!= nullptr){
+        Nodo* siguiente = actual -> siguiente;
+        delete actual;
+        actual=siguiente
+    }    
     (void)ultimo;  // Silencia warning hasta que implementes las funciones
 }
 
@@ -32,6 +39,7 @@ bool ListaSimple::vacia() const
 {
     // Ya está implementado: la lista está vacía si no tiene primer elemento.
     return primero == nullptr;
+
 }
 
 // Devuelve la cantidad de elementos
@@ -48,7 +56,19 @@ void ListaSimple::insertarAlInicio(int valor)
     // Casos a considerar:
     //   - La lista estaba vacía (hay que actualizar también `ultimo`)
     //   - La lista ya tenía elementos
-    (void)valor;
+    Nodo* nodoNuevo= new Nodo(valor);
+    if(vacia()){
+        primero=nodoNuevo;
+        ultimo=nodoNuevo;
+        largo=1;
+    }
+    else{
+        Nodo* siguiente=primero; // creo nodo que apunte a donde apunta primero
+         primero= nodoNuevo;
+         nodoNuevo -> siguiente = siguiente;
+    }
+    largo ++;
+    return;
 }
 
 // Ejercicio 2 — Insertar al final
@@ -58,6 +78,17 @@ void ListaSimple::insertarAlFinal(int valor)
     // Casos a considerar:
     //   - La lista estaba vacía (hay que actualizar también `primero`)
     //   - La lista ya tenía elementos
+    Nodo* nodoNuevo= new Nodo(valor);
+    if(vacio()){
+        primero=nodoNuevo;
+        ultimo=nodoNuevo;
+        largo=1
+    } 
+    else{
+        ultimo -> siguiente= nuevoNodo;
+    }
+    ultimo= nodoNuevo;
+    lista++
     (void)valor;
 }
 

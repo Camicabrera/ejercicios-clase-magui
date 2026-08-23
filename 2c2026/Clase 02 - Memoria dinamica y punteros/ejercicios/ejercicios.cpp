@@ -78,8 +78,7 @@ Persona *crearPersona(const std::string &nombre, int edad)
     // TODO: reservar una Persona en el heap con new, usando el constructor,
     // y devolver el puntero.
 
-    Persona *persona= new Persona(nombre,edad);
-    return persona;
+    return new Persona(nombre,edad);
 }
 
 // Ejercicio 7 — Redimensionar un arreglo dinámico
@@ -88,9 +87,7 @@ int *agregarElemento(int *arreglo, int tamanioActual, int nuevoElemento)
     // TODO: crear un nuevo arreglo de tamaño (tamanioActual + 1), copiar los
     // elementos viejos, agregar nuevoElemento al final, liberar el arreglo
     // viejo, y devolver el nuevo.
-    (void)arreglo;
-    (void)tamanioActual;
-    (void)nuevoElemento;
+
     int *nuevoArreglo= new int[tamanioActual+1];
     for (int i=0; i<tamanioActual;i++){
         *(nuevoArreglo+i)=*(arreglo+i);
