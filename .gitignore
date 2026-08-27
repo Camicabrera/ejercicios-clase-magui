@@ -5,8 +5,10 @@
 *.o
 
 # Executables (common names in this project)
-ejercicios
-ejercicios-extra
+# Anchored to "<carpeta>/<mismo nombre>" para no ignorar carpetas enteras
+# (p. ej. "ejercicios-extra" como patrón pelado ignoraría toda la carpeta).
+**/ejercicios/ejercicios
+**/ejercicios-extra/ejercicios-extra
 ejercicio-tap
 ejercicios-strings
 hello-word
