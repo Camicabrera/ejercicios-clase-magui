@@ -3,7 +3,7 @@
 # 2C 2026 | Docente: Ing. Magali Marijuan
 # ============================================================================
 
-# Makefile - Tut 03 EXTRA (Lista doble, lista circular e iteradores)
+# Makefile - Tut 03 EXTRA (Iteradores)
 # Flags estrictos de la materia.
 
 CXX      = g++
@@ -28,7 +28,7 @@ run: $(TARGET)
 	./$(TARGET)
 
 # Compila y corre las pruebas bajo Valgrind, para detectar memory leaks y
-# accesos inválidos a memoria (clave en lista doble y, sobre todo, circular).
+# accesos inválidos a memoria.
 # Nota: en Mac con Apple Silicon, valgrind no está disponible nativamente.
 # Usá `make docker-valgrind` en ese caso.
 valgrind: $(TARGET)
