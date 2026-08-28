@@ -29,7 +29,7 @@ ListaSimple::~ListaSimple()
     while (actual!= nullptr){
         Nodo* siguiente = actual -> siguiente;
         delete actual;
-        actual=siguiente
+        actual=siguiente;
     }    
     (void)ultimo;  // Silencia warning hasta que implementes las funciones
 }
@@ -60,7 +60,6 @@ void ListaSimple::insertarAlInicio(int valor)
     if(vacia()){
         primero=nodoNuevo;
         ultimo=nodoNuevo;
-        largo=1;
     }
     else{
         Nodo* siguiente=primero; // creo nodo que apunte a donde apunta primero
@@ -79,16 +78,15 @@ void ListaSimple::insertarAlFinal(int valor)
     //   - La lista estaba vacía (hay que actualizar también `primero`)
     //   - La lista ya tenía elementos
     Nodo* nodoNuevo= new Nodo(valor);
-    if(vacio()){
+    if(vacia()){
         primero=nodoNuevo;
         ultimo=nodoNuevo;
-        largo=1
     } 
     else{
-        ultimo -> siguiente= nuevoNodo;
+        ultimo -> siguiente= nodoNuevo;
     }
     ultimo= nodoNuevo;
-    lista++
+    largo++;
     (void)valor;
 }
 
@@ -97,7 +95,13 @@ bool ListaSimple::buscar(int valor) const
 {
     // TODO: recorrer la lista buscando el valor.
     // Devolver true si lo encontrás, false si llegás al final sin encontrarlo.
-    (void)valor;
+    Nodo* actual = primero;
+    while (actual != nullptr){
+        if (actual -> dato == valor){
+            return true;
+        }
+        actual = actual ->siguiente;
+    }
     return false;
 }
 
@@ -106,15 +110,14 @@ int &ListaSimple::frente()
 {
     // TODO: devolver el dato del primer nodo.
     // Precondición: la lista no está vacía.
-    static int dummy = 0;
-    return dummy;
+    return primero ->dato;
 }
 
 const int &ListaSimple::frente() const
 {
     // TODO: versión const de frente()
-    static int dummy = 0;
-    return dummy;
+
+    return primero -> dato;
 }
 
 // Ejercicio 5 — Obtener el último elemento
@@ -122,15 +125,14 @@ int &ListaSimple::final()
 {
     // TODO: devolver el dato del último nodo.
     // Precondición: la lista no está vacía.
-    static int dummy = 0;
-    return dummy;
+
+    return ultimo -> dato;
 }
 
 const int &ListaSimple::final() const
 {
     // TODO: versión const de final()
-    static int dummy = 0;
-    return dummy;
+    return ultimo -> dato;
 }
 
 // Ejercicio 6 — Eliminar el primer elemento
@@ -141,6 +143,15 @@ void ListaSimple::eliminarPrimero()
     //   - La lista tenía un solo elemento (queda vacía)
     //   - La lista tenía más de un elemento
     // Precondición: la lista no está vacía.
+    Nodo* viejo= primero;
+    primero = primero -> siguiente ;
+    delete viejo;
+    if (primero == nullptr){
+        ultimo=nullptr;
+    }
+    largo--;
+
+
 }
 
 // Ejercicio 7 — Eliminar por valor
@@ -155,7 +166,30 @@ bool ListaSimple::eliminar(int valor)
     //   - El valor no está en la lista
     //   - La lista tiene un solo elemento y es el que hay que eliminar
     (void)valor;
-    return false;
+    Nodo* actual = primero;
+    Nodo* anterior= nullptr;
+    while (actual != nullptr && actual -> dato != valor){
+        anterior = actual;
+        actual= actual -> siguiente;
+    }
+    if (actual == nullptr){
+        return false;
+    }
+
+
+     if (anterior == nullptr) {
+        primero = actual->siguiente;  
+    } else {
+        anterior->siguiente = actual->siguiente;  // salteo el nodo a borrar
+    }
+
+    if (actual == ultimo) {
+        ultimo = anterior;  // era el último nodo
+    }
+
+    delete actual;
+    largo--;
+    return true;
 }
 
 // Ejercicio 8 — Obtener elemento en posición i
@@ -163,17 +197,22 @@ int &ListaSimple::operator[](size_t i)
 {
     // TODO: recorrer la lista hasta la posición i y devolver el dato.
     // Precondición: i < tamanio()
-    (void)i;
-    static int dummy = 0;
-    return dummy;
+
+    Nodo* actual= primero;
+    for (size_t j=0;j<i;j++){
+        actual= actual -> siguiente;
+    }
+    return actual -> dato;
 }
 
 const int &ListaSimple::operator[](size_t i) const
 {
     // TODO: versión const de operator[]
-    (void)i;
-    static int dummy = 0;
-    return dummy;
+    Nodo* actual= primero;
+    for (size_t j=0;j<i;j++){
+        actual= actual -> siguiente;
+    }
+    return actual -> dato;
 }
 
 // Propuesto 1 — Insertar en posición
