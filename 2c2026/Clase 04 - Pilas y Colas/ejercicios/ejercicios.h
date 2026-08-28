@@ -253,4 +253,104 @@ public:
     size_t tamanio() const;
 };
 
+// ----------------------------------------------------------------------------
+// Propuesto 3 — Pila con mínimo en O(1)
+// ----------------------------------------------------------------------------
+// Pila que, además de las operaciones habituales, permite consultar el
+// mínimo elemento almacenado en O(1) (no alcanza con recorrer la pila: hay
+// que mantenerlo actualizado en cada push/pop).
+// Pista: además de la pila de valores, mantené una segunda PilaArreglo con
+// los mínimos "vigentes" en cada momento.
+class PilaConMinimo
+{
+private:
+    PilaArreglo valores;
+    PilaArreglo minimos;
+
+public:
+    // Agrega `valor` al tope de la pila.
+    void push(int valor);
+
+    // Elimina y devuelve el elemento del tope.
+    // Precondición: !empty()
+    int pop();
+
+    // Devuelve el elemento del tope sin eliminarlo.
+    // Precondición: !empty()
+    int top() const;
+
+    // Devuelve el mínimo valor almacenado actualmente en la pila, en O(1).
+    // Precondición: !empty()
+    int minimo() const;
+
+    // Indica si la pila está vacía.
+    bool empty() const;
+
+    // Devuelve la cantidad de elementos.
+    size_t tamanio() const;
+};
+
+// ----------------------------------------------------------------------------
+// Propuesto 4 — Conversión de infija a postfija (Shunting-yard)
+// ----------------------------------------------------------------------------
+// Convierte una expresión matemática en notación infija (con paréntesis y
+// precedencia de operadores +, -, *, /) a su equivalente en notación
+// postfija, usando una pila para los operadores.
+//
+// Tanto la expresión de entrada como la de salida tienen sus tokens
+// (números, operadores y paréntesis) separados por espacios, igual que en
+// `evaluarPostfija`.
+//
+// Ejemplos:
+//   infijaAPostfija("3 + 4")             -> "3 4 +"
+//   infijaAPostfija("3 + 4 * 2")         -> "3 4 2 * +"
+//   infijaAPostfija("( 3 + 4 ) * 2")     -> "3 4 + 2 *"
+// Precondición: `expresionInfija` es una expresión infija válida y
+// balanceada, con un único dígito por número.
+std::string infijaAPostfija(const std::string &expresionInfija);
+
+// ----------------------------------------------------------------------------
+// Propuesto 5 — Sistema de deshacer/rehacer (undo/redo)
+// ----------------------------------------------------------------------------
+// Modela el "deshacer/rehacer" de un editor (ver la sección "Casos de uso"
+// del apunte) usando dos pilas: una de estados para deshacer y otra para
+// rehacer. Cada estado es, para simplificar, un entero.
+class EditorDeshacerRehacer
+{
+private:
+    PilaArreglo deshacer;
+    PilaArreglo rehacer;
+    int estadoActual;
+
+public:
+    // Constructor: inicializa el editor con el estado inicial dado.
+    EditorDeshacerRehacer(int estadoInicial);
+
+    // Aplica una nueva acción que lleva al editor a `nuevoEstado`.
+    // El estado anterior pasa a la pila de deshacer, y se descarta
+    // cualquier historial de rehacer pendiente (una acción nueva invalida
+    // los "rehacer" que hubiera).
+    void aplicar(int nuevoEstado);
+
+    // Deshace la última acción: vuelve al estado anterior (que pasa a la
+    // pila de deshacer) y lo agrega a la pila de rehacer. Devuelve el
+    // estado actual después de deshacer.
+    // Precondición: puedeDeshacer()
+    int deshacerAccion();
+
+    // Rehace la última acción deshecha. Devuelve el estado actual después
+    // de rehacer.
+    // Precondición: puedeRehacer()
+    int rehacerAccion();
+
+    // Devuelve el estado actual del editor.
+    int estado() const;
+
+    // Indica si hay alguna acción para deshacer.
+    bool puedeDeshacer() const;
+
+    // Indica si hay alguna acción para rehacer.
+    bool puedeRehacer() const;
+};
+
 #endif

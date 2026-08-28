@@ -322,3 +322,135 @@ size_t ColaConDosPilas::tamanio() const
     // ambas pilas.
     return 0;
 }
+
+// ----------------------------------------------------------------------------
+// Propuesto 3 — Pila con mínimo en O(1)
+// ----------------------------------------------------------------------------
+
+void PilaConMinimo::push(int valor)
+{
+    // TODO: apilar `valor` en `valores`. Además, apilarlo también en
+    // `minimos` si `minimos` está vacía o si `valor` es menor o igual al
+    // mínimo actual (minimos.top()). Así, `minimos.top()` es siempre el
+    // mínimo vigente entre los elementos que quedan en la pila.
+    (void)valor;
+}
+
+int PilaConMinimo::pop()
+{
+    // TODO: desapilar de `valores`. Si el valor desapilado es igual al
+    // mínimo actual (minimos.top()), desapilar también de `minimos` (ese
+    // mínimo dejó de estar vigente). Devolver el valor desapilado.
+    // Precondición: !empty()
+    return 0;
+}
+
+int PilaConMinimo::top() const
+{
+    // TODO: devolver el tope de `valores`.
+    // Precondición: !empty()
+    return 0;
+}
+
+int PilaConMinimo::minimo() const
+{
+    // TODO: devolver el tope de `minimos` (el mínimo vigente), en O(1).
+    // Precondición: !empty()
+    return 0;
+}
+
+bool PilaConMinimo::empty() const
+{
+    // TODO: la pila está vacía si `valores` está vacía.
+    return true;
+}
+
+size_t PilaConMinimo::tamanio() const
+{
+    // TODO: devolver la cantidad de elementos de `valores`.
+    return 0;
+}
+
+// ----------------------------------------------------------------------------
+// Propuesto 4 — Conversión de infija a postfija (Shunting-yard)
+// ----------------------------------------------------------------------------
+
+std::string infijaAPostfija(const std::string &expresionInfija)
+{
+    // TODO: separar `expresionInfija` en tokens por espacios (podés usar un
+    // std::istringstream) y usar una PilaArreglo para los operadores
+    // pendientes (podés apilar un char convirtiéndolo a int, como en
+    // estaBalanceada). Por cada token:
+    //   - Si es un número: agregalo directamente a la salida.
+    //   - Si es "(": apilalo.
+    //   - Si es ")": desapilá operadores y agregalos a la salida hasta
+    //     encontrar el "(" correspondiente (que se descarta, sin agregarlo
+    //     a la salida).
+    //   - Si es un operador (+, -, *, /): mientras la pila no esté vacía, su
+    //     tope no sea "(" y el tope tenga precedencia mayor o igual a la del
+    //     token (recordá: * y / tienen más precedencia que + y -),
+    //     desapilalo y agregalo a la salida. Después, apilá el token.
+    // Al final, desapilá todos los operadores que queden y agregalos a la
+    // salida, en ese orden.
+    // Pista: te va a servir escribir una función auxiliar
+    // `int precedencia(char operador)` que devuelva un número más alto para
+    // * y / que para + y -.
+    (void)expresionInfija;
+    return "";
+}
+
+// ----------------------------------------------------------------------------
+// Propuesto 5 — Sistema de deshacer/rehacer (undo/redo)
+// ----------------------------------------------------------------------------
+
+EditorDeshacerRehacer::EditorDeshacerRehacer(int estadoInicial)
+    : estadoActual(estadoInicial)
+{
+    // Ya está implementado. No hace falta que modifiques nada acá.
+}
+
+void EditorDeshacerRehacer::aplicar(int nuevoEstado)
+{
+    // TODO: apilar el `estadoActual` (el que se está por abandonar) en
+    // `deshacer`, actualizar `estadoActual` a `nuevoEstado`, y vaciar por
+    // completo la pila `rehacer` (una acción nueva invalida cualquier
+    // "rehacer" pendiente).
+    (void)nuevoEstado;
+}
+
+int EditorDeshacerRehacer::deshacerAccion()
+{
+    // TODO: apilar el `estadoActual` en `rehacer` (para poder rehacerlo más
+    // adelante), actualizar `estadoActual` al valor que se desapila de
+    // `deshacer`, y devolver el nuevo `estadoActual`.
+    // Precondición: puedeDeshacer()
+    return 0;
+}
+
+int EditorDeshacerRehacer::rehacerAccion()
+{
+    // TODO: simétrico a deshacerAccion(): apilar el `estadoActual` en
+    // `deshacer`, actualizar `estadoActual` al valor que se desapila de
+    // `rehacer`, y devolver el nuevo `estadoActual`.
+    // Precondición: puedeRehacer()
+    return 0;
+}
+
+int EditorDeshacerRehacer::estado() const
+{
+    // TODO: devolver `estadoActual`.
+    (void)estadoActual; // Silencia warning hasta que implementes la función
+    return 0;
+}
+
+bool EditorDeshacerRehacer::puedeDeshacer() const
+{
+    // TODO: hay algo para deshacer si `deshacer` no está vacía.
+    return false;
+}
+
+bool EditorDeshacerRehacer::puedeRehacer() const
+{
+    // TODO: hay algo para rehacer si `rehacer` no está vacía.
+    return false;
+}

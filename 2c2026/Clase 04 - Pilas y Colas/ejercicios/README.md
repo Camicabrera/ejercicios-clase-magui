@@ -90,6 +90,14 @@ Cáscara para resolver los ejercicios de la cuarta clase: implementación de pil
    ambas estructuras vistas en la clase.
 2. **Cola con dos pilas** (`ColaConDosPilas`): implementación clásica de una
    cola usando únicamente dos pilas como estructura interna.
+3. **Pila con mínimo en O(1)** (`PilaConMinimo`): además de las operaciones
+   habituales, permite consultar el mínimo elemento almacenado sin
+   recorrer la pila.
+4. **Conversión de infija a postfija** (`infijaAPostfija`): algoritmo de
+   Shunting-yard simplificado, usando una pila de operadores. Complementa a
+   `evaluarPostfija`.
+5. **Sistema de deshacer/rehacer** (`EditorDeshacerRehacer`): implementa con
+   dos pilas el caso de uso de "undo/redo" descripto en el apunte.
 
 ## Estructuras de datos
 
