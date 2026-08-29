@@ -39,6 +39,13 @@ void PilaArreglo::redimensionar()
     // capacidad, copiar los `cantidad` elementos existentes, liberar el
     // arreglo viejo y actualizar `datos`.
     (void)capacidad; // Silencia warning hasta que implementes la función
+    capacidad *=2;
+    int* nuevoArreglo=new int[capacidad];
+    for (size_t i=0;i<cantidad;i++){
+        nuevoArreglo[i]= datos[i];
+    }
+    delete[] datos;
+    datos= nuevoArreglo;
 }
 
 void PilaArreglo::push(int valor)
@@ -47,6 +54,11 @@ void PilaArreglo::push(int valor)
     // Después, agregar `valor` en la posición `cantidad` e incrementar
     // `cantidad`.
     (void)valor;
+    if (cantidad == capacidad) {
+        redimensionar();
+        }
+    datos[cantidad] = valor;
+    cantidad++;
 }
 
 int PilaArreglo::pop()
@@ -54,14 +66,15 @@ int PilaArreglo::pop()
     // TODO: decrementar `cantidad` y devolver el valor que quedó en esa
     // posición (el que era el tope).
     // Precondición: !empty()
-    return 0;
+    cantidad--;
+    return datos[cantidad];
 }
 
 int PilaArreglo::top() const
 {
     // TODO: devolver el valor de la posición `cantidad - 1`.
     // Precondición: !empty()
-    return 0;
+    return datos[cantidad - 1];
 }
 
 // ----------------------------------------------------------------------------
@@ -142,7 +155,11 @@ PilaLista::~PilaLista()
 {
     // TODO: recorrer la pila haciendo pop() (o liberando nodo por nodo) hasta
     // que quede vacía.
+    while (! empty()){
+        pop();
+    }
 }
+
 
 bool PilaLista::empty() const
 {

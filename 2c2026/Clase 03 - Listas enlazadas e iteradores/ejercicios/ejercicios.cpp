@@ -56,7 +56,7 @@ void ListaSimple::insertarAlInicio(int valor)
     // Casos a considerar:
     //   - La lista estaba vacía (hay que actualizar también `ultimo`)
     //   - La lista ya tenía elementos
-    Nodo* nodoNuevo= new Nodo(valor);
+    Nodo* nodoNuevo= new Nodo(valor);//primero
     if(vacia()){
         primero=nodoNuevo;
         ultimo=nodoNuevo;
@@ -175,8 +175,6 @@ bool ListaSimple::eliminar(int valor)
     if (actual == nullptr){
         return false;
     }
-
-
      if (anterior == nullptr) {
         primero = actual->siguiente;  
     } else {
@@ -224,6 +222,30 @@ void ListaSimple::insertarEnPosicion(size_t i, int valor)
     // Precondición: i <= tamanio()
     (void)i;
     (void)valor;
+    if(i==0){
+        insertarAlInicio(valor);
+    }
+    else if((size_t) i==tamanio()){
+        insertarAlFinal(valor);
+    }
+    else {
+        Nodo* actual= primero;
+        Nodo* anterior= nullptr;
+        Nodo* nuevo= new Nodo(valor);
+
+        size_t j=0;
+        while(j!=i){
+            anterior= actual;
+            actual=actual->siguiente;
+            j++;
+        }
+        if(j==i){
+            nuevo -> siguiente = actual;
+            anterior->siguiente= nuevo;
+
+        }
+    }
+
 }
 
 // Propuesto 2 — Invertir la lista
@@ -232,4 +254,18 @@ void ListaSimple::invertir()
     // TODO: invertir el orden de los nodos in-place.
     // Pista: recorrer la lista cambiando los punteros `siguiente` para que
     // apunten al nodo anterior. Vas a necesitar 3 punteros auxiliares.
+    Nodo* actual = primero;
+    Nodo* anterior= nullptr;
+    ultimo=primero;
+
+    while (actual)
+    {
+        Nodo* siguiente= actual -> siguiente;
+        actual -> siguiente = anterior;
+        anterior= actual;
+        actual=siguiente;
+
+    }
+    primero = actual;
+
 }
