@@ -44,21 +44,17 @@ Estos algoritmos se llaman "elementales" porque son simples de programar, pero *
 
 La idea es recorrer el vector varias veces, comparando elementos adyacentes y "burbujeando" el más grande hacia el final en cada pasada.
 
-```cpp
-template <typename T>
-void bubbleSort(std::vector<T>& v) {
-    size_t n = v.size();
-    for (size_t i = 0; i < n; i++) {
-        bool huboSwap = false;
-        for (size_t j = 0; j + 1 < n - i; j++) {
-            if (v[j] > v[j + 1]) {
-                std::swap(v[j], v[j + 1]);
-                huboSwap = true;
-            }
-        }
-        if (!huboSwap) break;  // ya está ordenado, corto antes
-    }
-}
+```
+función bubbleSort(v):
+    n ← longitud(v)
+    para i desde 0 hasta n-1:
+        huboSwap ← falso
+        para j desde 0 hasta n-i-2:
+            si v[j] > v[j+1]:
+                intercambiar(v[j], v[j+1])
+                huboSwap ← verdadero
+        si no huboSwap:
+            terminar    // ya está ordenado
 ```
 
 > El corte con `huboSwap` es lo que hace que el **mejor caso** de bubble sort sea O(n): si el vector ya está ordenado, una sola pasada alcanza para darse cuenta.
@@ -67,42 +63,33 @@ void bubbleSort(std::vector<T>& v) {
 
 La idea es construir el vector ordenado de a un elemento por vez: en cada paso, se toma el siguiente elemento y se lo "inserta" en la posición correcta dentro de la parte ya ordenada.
 
-```cpp
-template <typename T>
-void insertionSort(std::vector<T>& v) {
-    size_t n = v.size();
-    for (size_t i = 1; i < n; i++) {
-        T actual = v[i];
-        size_t j = i;
-        while (j > 0 && v[j - 1] > actual) {
-            v[j] = v[j - 1];
-            j--;
-        }
-        v[j] = actual;
-    }
-}
+```
+función insertionSort(v):
+    n ← longitud(v)
+    para i desde 1 hasta n-1:
+        actual ← v[i]
+        j ← i
+        mientras j > 0 y v[j-1] > actual:
+            v[j] ← v[j-1]
+            j ← j - 1
+        v[j] ← actual
 ```
 
-> Insertion sort es muy eficiente cuando el vector está **casi ordenado**: en ese caso el `while` interno casi no itera y el costo se acerca a O(n).
+> Insertion sort es muy eficiente cuando el vector está **casi ordenado**: en ese caso el `mientras` interno casi no itera y el costo se acerca a O(n).
 
 ### Selection sort
 
 La idea es, en cada paso, buscar el **mínimo** de la parte no ordenada y colocarlo en su posición final mediante un único intercambio.
 
-```cpp
-template <typename T>
-void selectionSort(std::vector<T>& v) {
-    size_t n = v.size();
-    for (size_t i = 0; i < n; i++) {
-        size_t indiceMinimo = i;
-        for (size_t j = i + 1; j < n; j++) {
-            if (v[j] < v[indiceMinimo]) {
-                indiceMinimo = j;
-            }
-        }
-        std::swap(v[i], v[indiceMinimo]);
-    }
-}
+```
+función selectionSort(v):
+    n ← longitud(v)
+    para i desde 0 hasta n-1:
+        indiceMinimo ← i
+        para j desde i+1 hasta n-1:
+            si v[j] < v[indiceMinimo]:
+                indiceMinimo ← j
+        intercambiar(v[i], v[indiceMinimo])
 ```
 
 > Pregunta para pensar: ¿por qué selection sort **siempre** hace O(n) comparaciones en cada pasada, incluso si el vector ya está ordenado? ¿Qué diferencia tiene esto respecto de bubble sort?
@@ -123,11 +110,10 @@ void selectionSort(std::vector<T>& v) {
 
 Esto importa mucho cuando ordenamos **structs** por un campo, pero queremos conservar el orden de otro campo. Por ejemplo, si tenemos una lista de alumnos ordenados alfabéticamente y queremos reordenarla por nota, un algoritmo estable garantiza que, entre dos alumnos con la misma nota, se mantenga el orden alfabético previo.
 
-```cpp
-struct Alumno {
-    std::string nombre;
-    int nota;
-};
+```
+estructura Alumno:
+    nombre: string
+    nota: entero
 ```
 
 > Pregunta para pensar: si tuvieras que ordenar una lista de pedidos por prioridad, pero conservar el orden de llegada entre pedidos de igual prioridad... ¿qué algoritmo elegirías?
@@ -157,55 +143,53 @@ Esto tiene consecuencias directas sobre los algoritmos que vimos:
 
 Recorre el vector elemento por elemento hasta encontrar (o no) lo buscado. No requiere ninguna precondición sobre el orden de los datos.
 
-```cpp
-template <typename T>
-int busquedaLineal(const std::vector<T>& v, T buscado) {
-    for (int i = 0; i < (int)v.size(); i++) {
-        if (v[i] == buscado) return i;
-    }
-    return -1;  // no encontrado
-}
+```
+función busquedaLineal(v, buscado):
+    para i desde 0 hasta longitud(v)-1:
+        si v[i] == buscado:
+            devolver i
+    devolver -1    // no encontrado
 ```
 
 ## Búsqueda binaria
 
 Aprovecha que el vector está **ordenado** para descartar, en cada paso, la mitad de los elementos que quedan por revisar.
 
-```cpp
-template <typename T>
-int busquedaBinaria(const std::vector<T>& v, T buscado) {
-    int izq = 0;
-    int der = (int)v.size() - 1;
+```
+función busquedaBinaria(v, buscado):
+    // pre: v está ordenado
+    izq ← 0
+    der ← longitud(v) - 1
 
-    while (izq <= der) {
-        int medio = izq + (der - izq) / 2;
+    mientras izq <= der:
+        medio ← izq + (der - izq) / 2
 
-        if (v[medio] == buscado) {
-            return medio;
-        } else if (v[medio] < buscado) {
-            izq = medio + 1;
-        } else {
-            der = medio - 1;
-        }
-    }
+        si v[medio] == buscado:
+            devolver medio
+        sino si v[medio] < buscado:
+            izq ← medio + 1
+        sino:
+            der ← medio - 1
 
-    return -1;  // no encontrado
-}
+    devolver -1    // no encontrado
 ```
 
 También se puede implementar de forma recursiva, ya que en definición es un Divide & Conquer donde no hace falta combinar (solo se sigue por una de las dos mitades):
 
-```cpp
-template <typename T>
-int busquedaBinariaRec(const std::vector<T>& v, T buscado, int izq, int der) {
-    if (izq > der) return -1;  // caso base: no encontrado
+```
+función busquedaBinariaRec(v, buscado, izq, der):
+    // pre: v está ordenado
+    si izq > der:
+        devolver -1    // caso base: no encontrado
 
-    int medio = izq + (der - izq) / 2;
+    medio ← izq + (der - izq) / 2
 
-    if (v[medio] == buscado) return medio;
-    if (v[medio] < buscado) return busquedaBinariaRec(v, buscado, medio + 1, der);
-    return busquedaBinariaRec(v, buscado, izq, medio - 1);
-}
+    si v[medio] == buscado:
+        devolver medio
+    si v[medio] < buscado:
+        devolver busquedaBinariaRec(v, buscado, medio + 1, der)
+    sino:
+        devolver busquedaBinariaRec(v, buscado, izq, medio - 1)
 ```
 
 ## Precondición e invariante
