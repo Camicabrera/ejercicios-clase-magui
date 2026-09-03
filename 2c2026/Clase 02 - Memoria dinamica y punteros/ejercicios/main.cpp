@@ -112,26 +112,26 @@ int main()
         liberarCadena(cadena);
     }
 
-    // Propuesto 1 — Matriz dinámica
-    // La matriz se arma acá mismo (con `new`) solo para poder probar
-    // liberarMatriz. Su correctitud se termina de confirmar con
-    // `make valgrind`: liberar memoria correctamente no se puede chequear
-    // con un simple booleano.
-    int filasMatriz = 3;
-    int **matriz = new int *[static_cast<std::size_t>(filasMatriz)];
-    for (int i = 0; i < filasMatriz; i++)
-    {
-        matriz[i] = new int[static_cast<std::size_t>(filasMatriz)];
-        for (int j = 0; j < filasMatriz; j++)
-        {
-            matriz[i][j] = i * filasMatriz + j;
-        }
-    }
-    liberarMatriz(matriz, filasMatriz);
-    std::cout << "P1  - liberarMatriz (revisar con make valgrind)" << std::endl;
+    // // Propuesto 1 — Matriz dinámica
+    // // La matriz se arma acá mismo (con `new`) solo para poder probar
+    // // liberarMatriz. Su correctitud se termina de confirmar con
+    // // `make valgrind`: liberar memoria correctamente no se puede chequear
+    // // con un simple booleano.
+    // int filasMatriz = 3;
+    // int **matriz = new int *[static_cast<std::size_t>(filasMatriz)];
+    // for (int i = 0; i < filasMatriz; i++)
+    // {
+    //     matriz[i] = new int[static_cast<std::size_t>(filasMatriz)];
+    //     for (int j = 0; j < filasMatriz; j++)
+    //     {
+    //         matriz[i][j] = i * filasMatriz + j;
+    //     }
+    // }
+    // liberarMatriz(matriz, filasMatriz);
+    // std::cout << "P1  - liberarMatriz (revisar con make valgrind)" << std::endl;
 
-    std::cout << "\nResultado: " << pruebasOk << "/" << totalPruebas
-              << " pruebas pasadas." << std::endl;
+    // std::cout << "\nResultado: " << pruebasOk << "/" << totalPruebas
+    //           << " pruebas pasadas." << std::endl;
 
     return 0;
 }

@@ -1,10 +1,10 @@
-Tut 09 – Grafos I: Representación y recorridos
+Tutorial 11 – Grafos: Representación
 ===
 
-> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**
 > **2C 2026** · Docente: **Ing. Magali Marijuan**
 
-- [Tut 09 – Grafos I: Representación y recorridos](#tut-09--grafos-i-representación-y-recorridos)
+- [Tutorial 11 – Grafos: Representación](#tutorial-11--grafos-representación)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [¿Qué es un grafo?](#qué-es-un-grafo)
   - [Vocabulario básico](#vocabulario-básico)

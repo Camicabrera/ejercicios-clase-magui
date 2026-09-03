@@ -1,10 +1,10 @@
-Tut 11 – Fuerza bruta, Backtracking y Greedy
+Tutorial 13 – Backtracking
 ===
 
-> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**
 > **2C 2026** · Docente: **Ing. Magali Marijuan**
 
-- [Tut 11 – Fuerza bruta, Backtracking y Greedy](#tut-11--fuerza-bruta-backtracking-y-greedy)
+- [Tutorial 13 – Backtracking](#tutorial-13--backtracking)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [Fuerza bruta](#fuerza-bruta)
   - [¿Qué es la fuerza bruta?](#qué-es-la-fuerza-bruta)

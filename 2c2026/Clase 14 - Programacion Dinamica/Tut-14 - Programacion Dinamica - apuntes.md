@@ -1,10 +1,10 @@
-Tut 12 – Programación dinámica y NP
+Tutorial 14 – Programación Dinámica
 ===
 
-> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**
 > **2C 2026** · Docente: **Ing. Magali Marijuan**
 
-- [Tut 12 – Programación dinámica y NP](#tut-12--programación-dinámica-y-np)
+- [Tutorial 14 – Programación Dinámica](#tutorial-14--programación-dinámica)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [Programación dinámica](#programación-dinámica)
   - [¿Qué es la programación dinámica?](#qué-es-la-programación-dinámica)
