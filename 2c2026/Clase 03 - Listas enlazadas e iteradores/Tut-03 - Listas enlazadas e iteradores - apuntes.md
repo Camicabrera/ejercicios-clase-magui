@@ -1,10 +1,10 @@
-Tutorial 3 – Listas enlazadas e iteradores
+**Tutorial** 3 – Listas enlazadas e iteradores
 ===
 
-> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> ****Ingeniería** en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
 > **2C 2026** · Docente: **Ing. Magali Marijuan**
 
-- [Tutorial 3 – Listas enlazadas e iteradores](#tutorial-3--listas-enlazadas-e-iteradores)
+- [**Tutorial** 3 – Listas enlazadas e iteradores](#tutorial-3--listas-enlazadas-e-iteradores)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [El nodo: la unidad básica](#el-nodo-la-unidad-básica)
 - [Lista simplemente enlazada](#lista-simplemente-enlazada)
@@ -30,14 +30,22 @@ Tutorial 3 – Listas enlazadas e iteradores
 - [Iteradores](#iteradores)
   - [¿Qué es un iterador?](#qué-es-un-iterador)
   - [Implementando un iterador propio](#implementando-un-iterador-propio)
-  - [Cómo se traduce el for basado en rango](#cómo-se-traduce-el-for-basado-en-rango)
+    - [Métodos que debe tener la clase Iterador](#métodos-que-debe-tener-la-clase-iterador)
+    - [Métodos que debe tener la clase contenedora](#métodos-que-debe-tener-la-clase-contenedora)
+    - [Estructura del iterador](#estructura-del-iterador)
+    - [Cómo se traduce el for basado en rango](#cómo-se-traduce-el-for-basado-en-rango)
   - [¿Por qué desacoplar el recorrido de la estructura?](#por-qué-desacoplar-el-recorrido-de-la-estructura)
 - [Localidad espacial y cache](#localidad-espacial-y-cache)
   - [¿Por qué importa la localidad espacial?](#por-qué-importa-la-localidad-espacial)
   - [Vector vs lista enlazada: el impacto real](#vector-vs-lista-enlazada-el-impacto-real)
 - [Costo amortizado de std::vector](#costo-amortizado-de-stdvector)
   - [¿Qué pasa cuando el vector se llena?](#qué-pasa-cuando-el-vector-se-llena)
-  - [Análisis amortizado](#análisis-amortizado)
+  - [Una analogía: la alcancía](#una-analogía-la-alcancía)
+  - [El ejemplo concreto](#el-ejemplo-concreto)
+  - [Sumemos los costos](#sumemos-los-costos)
+  - [El patrón general](#el-patrón-general)
+  - [¿Por qué "amortizado"?](#por-qué-amortizado)
+  - [¿Y si agrandamos de a 1 en vez de duplicar?](#y-si-agrandamos-de-a-1-en-vez-de-duplicar)
 - [Comparación con arreglo y std::vector](#comparación-con-arreglo-y-stdvector)
 - [Resumen general de complejidades](#resumen-general-de-complejidades)
 

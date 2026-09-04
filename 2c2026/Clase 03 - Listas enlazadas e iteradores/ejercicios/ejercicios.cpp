@@ -20,17 +20,10 @@ ListaSimple::ListaSimple()
 // Destructor: libera todos los nodos
 ListaSimple::~ListaSimple()
 {
-
     // TODO: recorrer la lista y liberar cada nodo con delete.
     // Recordá guardar el puntero al siguiente ANTES de hacer delete del actual.
     // Al final, primero, ultimo y largo deberían quedar en su estado inicial
     // (aunque técnicamente no importa porque el objeto se destruye).
-   Nodo* actual= primero;
-    while (actual!= nullptr){
-        Nodo* siguiente = actual -> siguiente;
-        delete actual;
-        actual=siguiente;
-    }    
     (void)ultimo;  // Silencia warning hasta que implementes las funciones
 }
 
@@ -39,7 +32,6 @@ bool ListaSimple::vacia() const
 {
     // Ya está implementado: la lista está vacía si no tiene primer elemento.
     return primero == nullptr;
-
 }
 
 // Devuelve la cantidad de elementos
@@ -56,18 +48,18 @@ void ListaSimple::insertarAlInicio(int valor)
     // Casos a considerar:
     //   - La lista estaba vacía (hay que actualizar también `ultimo`)
     //   - La lista ya tenía elementos
-    Nodo* nodoNuevo= new Nodo(valor);//primero
-    if(vacia()){
-        primero=nodoNuevo;
-        ultimo=nodoNuevo;
+    Nodo* nuevoNodo = new Nodo(valor);
+
+    if(vacia()) {
+        this -> primero = nuevoNodo;
+        this -> ultimo = nuevoNodo;
+        this -> largo ++ ;
+        return;
     }
-    else{
-        Nodo* siguiente=primero; // creo nodo que apunte a donde apunta primero
-         primero= nodoNuevo;
-         nodoNuevo -> siguiente = siguiente;
-    }
-    largo ++;
-    return;
+
+    nuevoNodo -> siguiente = this -> primero;
+    this -> primero = nuevoNodo;
+    this -> largo ++;   
 }
 
 // Ejercicio 2 — Insertar al final
@@ -77,16 +69,6 @@ void ListaSimple::insertarAlFinal(int valor)
     // Casos a considerar:
     //   - La lista estaba vacía (hay que actualizar también `primero`)
     //   - La lista ya tenía elementos
-    Nodo* nodoNuevo= new Nodo(valor);
-    if(vacia()){
-        primero=nodoNuevo;
-        ultimo=nodoNuevo;
-    } 
-    else{
-        ultimo -> siguiente= nodoNuevo;
-    }
-    ultimo= nodoNuevo;
-    largo++;
     (void)valor;
 }
 
@@ -95,13 +77,7 @@ bool ListaSimple::buscar(int valor) const
 {
     // TODO: recorrer la lista buscando el valor.
     // Devolver true si lo encontrás, false si llegás al final sin encontrarlo.
-    Nodo* actual = primero;
-    while (actual != nullptr){
-        if (actual -> dato == valor){
-            return true;
-        }
-        actual = actual ->siguiente;
-    }
+    (void)valor;
     return false;
 }
 
@@ -110,14 +86,15 @@ int &ListaSimple::frente()
 {
     // TODO: devolver el dato del primer nodo.
     // Precondición: la lista no está vacía.
-    return primero ->dato;
+    static int dummy = 0;
+    return dummy;
 }
 
 const int &ListaSimple::frente() const
 {
     // TODO: versión const de frente()
-
-    return primero -> dato;
+    static int dummy = 0;
+    return dummy;
 }
 
 // Ejercicio 5 — Obtener el último elemento
@@ -125,14 +102,15 @@ int &ListaSimple::final()
 {
     // TODO: devolver el dato del último nodo.
     // Precondición: la lista no está vacía.
-
-    return ultimo -> dato;
+    static int dummy = 0;
+    return dummy;
 }
 
 const int &ListaSimple::final() const
 {
     // TODO: versión const de final()
-    return ultimo -> dato;
+    static int dummy = 0;
+    return dummy;
 }
 
 // Ejercicio 6 — Eliminar el primer elemento
@@ -143,15 +121,6 @@ void ListaSimple::eliminarPrimero()
     //   - La lista tenía un solo elemento (queda vacía)
     //   - La lista tenía más de un elemento
     // Precondición: la lista no está vacía.
-    Nodo* viejo= primero;
-    primero = primero -> siguiente ;
-    delete viejo;
-    if (primero == nullptr){
-        ultimo=nullptr;
-    }
-    largo--;
-
-
 }
 
 // Ejercicio 7 — Eliminar por valor
@@ -166,28 +135,7 @@ bool ListaSimple::eliminar(int valor)
     //   - El valor no está en la lista
     //   - La lista tiene un solo elemento y es el que hay que eliminar
     (void)valor;
-    Nodo* actual = primero;
-    Nodo* anterior= nullptr;
-    while (actual != nullptr && actual -> dato != valor){
-        anterior = actual;
-        actual= actual -> siguiente;
-    }
-    if (actual == nullptr){
-        return false;
-    }
-     if (anterior == nullptr) {
-        primero = actual->siguiente;  
-    } else {
-        anterior->siguiente = actual->siguiente;  // salteo el nodo a borrar
-    }
-
-    if (actual == ultimo) {
-        ultimo = anterior;  // era el último nodo
-    }
-
-    delete actual;
-    largo--;
-    return true;
+    return false;
 }
 
 // Ejercicio 8 — Obtener elemento en posición i
@@ -195,22 +143,17 @@ int &ListaSimple::operator[](size_t i)
 {
     // TODO: recorrer la lista hasta la posición i y devolver el dato.
     // Precondición: i < tamanio()
-
-    Nodo* actual= primero;
-    for (size_t j=0;j<i;j++){
-        actual= actual -> siguiente;
-    }
-    return actual -> dato;
+    (void)i;
+    static int dummy = 0;
+    return dummy;
 }
 
 const int &ListaSimple::operator[](size_t i) const
 {
     // TODO: versión const de operator[]
-    Nodo* actual= primero;
-    for (size_t j=0;j<i;j++){
-        actual= actual -> siguiente;
-    }
-    return actual -> dato;
+    (void)i;
+    static int dummy = 0;
+    return dummy;
 }
 
 // Propuesto 1 — Insertar en posición
@@ -222,30 +165,6 @@ void ListaSimple::insertarEnPosicion(size_t i, int valor)
     // Precondición: i <= tamanio()
     (void)i;
     (void)valor;
-    if(i==0){
-        insertarAlInicio(valor);
-    }
-    else if((size_t) i==tamanio()){
-        insertarAlFinal(valor);
-    }
-    else {
-        Nodo* actual= primero;
-        Nodo* anterior= nullptr;
-        Nodo* nuevo= new Nodo(valor);
-
-        size_t j=0;
-        while(j!=i){
-            anterior= actual;
-            actual=actual->siguiente;
-            j++;
-        }
-        if(j==i){
-            nuevo -> siguiente = actual;
-            anterior->siguiente= nuevo;
-
-        }
-    }
-
 }
 
 // Propuesto 2 — Invertir la lista
@@ -254,18 +173,4 @@ void ListaSimple::invertir()
     // TODO: invertir el orden de los nodos in-place.
     // Pista: recorrer la lista cambiando los punteros `siguiente` para que
     // apunten al nodo anterior. Vas a necesitar 3 punteros auxiliares.
-    Nodo* actual = primero;
-    Nodo* anterior= nullptr;
-    ultimo=primero;
-
-    while (actual)
-    {
-        Nodo* siguiente= actual -> siguiente;
-        actual -> siguiente = anterior;
-        anterior= actual;
-        actual=siguiente;
-
-    }
-    primero = actual;
-
 }

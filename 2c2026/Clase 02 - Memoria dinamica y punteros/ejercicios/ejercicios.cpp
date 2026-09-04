@@ -13,7 +13,7 @@
 void duplicarPuntero(int *x)
 {
     // TODO: duplicar el valor apuntado por x.
-    *x = *x * 2;
+    (void)x;
 }
 
 // Ejercicio 2 — Puntero vs referencia
@@ -28,32 +28,25 @@ int *crearArregloDeCuadrados(int n)
 {
     // TODO: reservar un arreglo de n enteros con new[] y llenarlo con los
     // cuadrados de 0 a n-1.
-    int *arreglo= new int [n];
-    for (int i=0;i<n;i++){
-        arreglo[i]=i*i;
-    }
-
-    return arreglo;
+    (void)n;
+    return nullptr;
 }
 
 // Ejercicio 4 — Aritmética de punteros (lectura)
 int sumarArregloPuntero(const int *arreglo, int tamanio)
 {
     // TODO: sumar los tamanio elementos de arreglo usando *(arreglo + i).
-    int suma=0;
-    for (int i=0; i<tamanio ; i++){
-        suma=*(arreglo+i);
-    }
-    return suma;
+    (void)arreglo;
+    (void)tamanio;
+    return 0;
 }
 
 // Ejercicio 5 — Aritmética de punteros (escritura)
 void duplicarValores(int *arreglo, int tamanio)
 {
     // TODO: duplicar cada elemento in-place usando *(arreglo + i) = ...
-    for (int i=0; i<tamanio;i++){
-        *(arreglo +i)*=2;
-    }
+    (void)arreglo;
+    (void)tamanio;
 }
 
 // Ejercicio 6 — Struct en el heap: constructor y destructor
@@ -62,23 +55,22 @@ int personasDestruidas = 0;
 Persona::Persona(const std::string &nombreInicial, int edadInicial)
 {
     // TODO: inicializar nombre y edad con los valores recibidos.
-    nombre= nombreInicial;
-    edad=edadInicial;
-
+    (void)nombreInicial;
+    (void)edadInicial;
 }
 
 Persona::~Persona()
 {
     // TODO: incrementar personasDestruidas para avisar que este objeto murió.
-    personasDestruidas++;
 }
 
 Persona *crearPersona(const std::string &nombre, int edad)
 {
     // TODO: reservar una Persona en el heap con new, usando el constructor,
     // y devolver el puntero.
-
-    return new Persona(nombre,edad);
+    (void)nombre;
+    (void)edad;
+    return nullptr;
 }
 
 // Ejercicio 7 — Redimensionar un arreglo dinámico
@@ -87,14 +79,10 @@ int *agregarElemento(int *arreglo, int tamanioActual, int nuevoElemento)
     // TODO: crear un nuevo arreglo de tamaño (tamanioActual + 1), copiar los
     // elementos viejos, agregar nuevoElemento al final, liberar el arreglo
     // viejo, y devolver el nuevo.
-
-    int *nuevoArreglo= new int[tamanioActual+1];
-    for (int i=0; i<tamanioActual;i++){
-        *(nuevoArreglo+i)=*(arreglo+i);
-    }
-    *(nuevoArreglo+tamanioActual)= nuevoElemento;
-    delete[] arreglo;
-    return nuevoArreglo;
+    (void)arreglo;
+    (void)tamanioActual;
+    (void)nuevoElemento;
+    return nullptr;
 }
 
 // Ejercicio 8 — Lista enlazada dinámica

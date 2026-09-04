@@ -55,49 +55,33 @@ Una pila es una estructura donde el **último elemento en entrar es el primero e
 
 Guardamos los elementos en un arreglo dinámico y un índice `tope` que indica la próxima posición libre. Cuando el arreglo se llena, pedimos uno más grande (típicamente el doble) y copiamos los elementos, igual que hace `std::vector` internamente.
 
-```cpp
-template <typename T>
-class PilaArreglo {
-private:
-    T* datos;
-    size_t capacidad;
-    size_t cantidad;   // también funciona como índice de la próxima posición libre
+**Estructura:**
+```
+PilaArreglo:
+    datos: arreglo de elementos
+    capacidad: tamaño del arreglo
+    cantidad: cantidad de elementos (también índice de la próxima posición libre)
+```
 
-    void redimensionar() {
-        capacidad *= 2;
-        T* nuevoArreglo = new T[capacidad];
-        for (size_t i = 0; i < cantidad; i++) {
-            nuevoArreglo[i] = datos[i];
-        }
-        delete[] datos;
-        datos = nuevoArreglo;
-    }
+**Operaciones:**
+```
+función push(valor):
+    si cantidad == capacidad:
+        redimensionar()    // duplicar capacidad y copiar elementos
+    datos[cantidad] ← valor
+    cantidad ← cantidad + 1
 
-public:
-    PilaArreglo() : datos(new T[1]), capacidad(1), cantidad(0) {}
-    ~PilaArreglo() { delete[] datos; }
+función pop():
+    // pre: no está vacía
+    cantidad ← cantidad - 1
+    devolver datos[cantidad]
 
-    void push(const T& valor) {
-        if (cantidad == capacidad) {
-            redimensionar();
-        }
-        datos[cantidad] = valor;
-        cantidad++;
-    }
+función top():
+    // pre: no está vacía
+    devolver datos[cantidad - 1]
 
-    T pop() {
-        // precondición: !empty()
-        cantidad--;
-        return datos[cantidad];
-    }
-
-    const T& top() const {
-        // precondición: !empty()
-        return datos[cantidad - 1];
-    }
-
-    bool empty() const { return cantidad == 0; }
-};
+función empty():
+    devolver cantidad == 0
 ```
 
 > **Pregunta para pensar:** `redimensionar()` es O(n), pero decimos que `push` es "O(1) amortizado". ¿Por qué? *Pista:* pensar cuántas veces se redimensiona en n operaciones de `push`, sumando el costo total y dividiendo por n.
@@ -106,42 +90,35 @@ public:
 
 Usamos una lista simplemente enlazada donde `push` y `pop` operan siempre sobre el `primero`. No hace falta puntero a `ultimo`.
 
-```cpp
-template <typename T>
-class PilaLista {
-private:
-    Nodo<T>* tope;
-    size_t cantidad;
+**Estructura:**
+```
+PilaLista:
+    tope: puntero al primer nodo (el tope de la pila)
+    cantidad: cantidad de elementos
+```
 
-public:
-    PilaLista() : tope(nullptr), cantidad(0) {}
+**Operaciones:**
+```
+función push(valor):
+    nuevo ← crear Nodo(valor, siguiente: tope)
+    tope ← nuevo
+    cantidad ← cantidad + 1
 
-    ~PilaLista() {
-        while (!empty()) pop();
-    }
+función pop():
+    // pre: no está vacía
+    viejoTope ← tope
+    valor ← viejoTope.dato
+    tope ← tope.siguiente
+    liberar viejoTope
+    cantidad ← cantidad - 1
+    devolver valor
 
-    void push(const T& valor) {
-        tope = new Nodo<T>(valor, tope);   // el nuevo nodo pasa a ser el primero
-        cantidad++;
-    }
+función top():
+    // pre: no está vacía
+    devolver tope.dato
 
-    T pop() {
-        // precondición: !empty()
-        Nodo<T>* viejoTope = tope;
-        T valor = viejoTope->dato;
-        tope = tope->siguiente;
-        delete viejoTope;
-        cantidad--;
-        return valor;
-    }
-
-    const T& top() const {
-        // precondición: !empty()
-        return tope->dato;
-    }
-
-    bool empty() const { return tope == nullptr; }
-};
+función empty():
+    devolver tope == null
 ```
 
 ## Repaso de complejidades (pila)
@@ -172,112 +149,84 @@ Una cola es una estructura donde el **primer elemento en entrar es el primero en
 
 ## Implementación de la cola sobre arreglo (buffer circular)
 
-Si implementáramos la cola sobre un arreglo "ingenuo" (agregando al final y sacando del inicio corriendo todos los elementos), `dequeue` sería O(n). La solución es un **buffer circular**: dos índices, `frente` y `finalUso`, que "dan la vuelta" con módulo cuando llegan al final del arreglo.
+Si implementáramos la cola sobre un arreglo "ingenuo" (agregando al final y sacando del inicio corriendo todos los elementos), `dequeue` sería O(n). La solución es un **buffer circular**: dos índices, `frente` y `final`, que "dan la vuelta" con módulo cuando llegan al final del arreglo.
 
-```cpp
-template <typename T>
-class ColaArreglo {
-private:
-    T* datos;
-    size_t capacidad;
-    size_t frente;     // índice del primer elemento
-    size_t cantidad;    // cantidad de elementos actuales
-
-    void redimensionar() {
-        size_t nuevaCapacidad = capacidad * 2;
-        T* nuevoArreglo = new T[nuevaCapacidad];
-        for (size_t i = 0; i < cantidad; i++) {
-            // "desenrollamos" el buffer circular en el nuevo arreglo, en orden
-            nuevoArreglo[i] = datos[(frente + i) % capacidad];
-        }
-        delete[] datos;
-        datos = nuevoArreglo;
-        capacidad = nuevaCapacidad;
-        frente = 0;
-    }
-
-public:
-    ColaArreglo() : datos(new T[1]), capacidad(1), frente(0), cantidad(0) {}
-    ~ColaArreglo() { delete[] datos; }
-
-    void enqueue(const T& valor) {
-        if (cantidad == capacidad) {
-            redimensionar();
-        }
-        size_t posicionInsercion = (frente + cantidad) % capacidad;
-        datos[posicionInsercion] = valor;
-        cantidad++;
-    }
-
-    T dequeue() {
-        // precondición: !empty()
-        T valor = datos[frente];
-        frente = (frente + 1) % capacidad;   // avanza "circularmente"
-        cantidad--;
-        return valor;
-    }
-
-    const T& front() const {
-        // precondición: !empty()
-        return datos[frente];
-    }
-
-    bool empty() const { return cantidad == 0; }
-};
+**Estructura:**
+```
+ColaArreglo:
+    datos: arreglo de elementos
+    capacidad: tamaño del arreglo
+    frente: índice del primer elemento
+    cantidad: cantidad de elementos actuales
 ```
 
-> **Pregunta para pensar:** ¿por qué usamos `(frente + i) % capacidad` en vez de simplemente `frente + i`? Dibujá un buffer de capacidad 4 donde `frente = 2` y `cantidad = 3` para visualizarlo.
+**Operaciones:**
+```
+función enqueue(valor):
+    si cantidad == capacidad:
+        redimensionar()    // duplicar capacidad, "desenrollar" el buffer circular
+    posicion ← (frente + cantidad) mod capacidad
+    datos[posicion] ← valor
+    cantidad ← cantidad + 1
+
+función dequeue():
+    // pre: no está vacía
+    valor ← datos[frente]
+    frente ← (frente + 1) mod capacidad    // avanza "circularmente"
+    cantidad ← cantidad - 1
+    devolver valor
+
+función front():
+    // pre: no está vacía
+    devolver datos[frente]
+
+función empty():
+    devolver cantidad == 0
+```
+
+> **Pregunta para pensar:** ¿por qué usamos `(frente + i) mod capacidad` en vez de simplemente `frente + i`? Dibujá un buffer de capacidad 4 donde `frente = 2` y `cantidad = 3` para visualizarlo.
 
 ## Implementación de la cola sobre lista enlazada
 
 Con una lista simplemente enlazada que mantiene punteros a `primero` **y** `ultimo`, `enqueue` inserta al final y `dequeue` elimina del inicio — ambas O(1), sin necesidad de módulo ni redimensionamiento.
 
-```cpp
-template <typename T>
-class ColaLista {
-private:
-    Nodo<T>* primero;
-    Nodo<T>* ultimo;
-    size_t cantidad;
+**Estructura:**
+```
+ColaLista:
+    primero: puntero al primer nodo (frente de la cola)
+    ultimo: puntero al último nodo (final de la cola)
+    cantidad: cantidad de elementos
+```
 
-public:
-    ColaLista() : primero(nullptr), ultimo(nullptr), cantidad(0) {}
+**Operaciones:**
+```
+función enqueue(valor):
+    nuevo ← crear Nodo(valor, siguiente: null)
+    si ultimo == null:
+        primero ← nuevo
+        ultimo ← nuevo
+    sino:
+        ultimo.siguiente ← nuevo
+        ultimo ← nuevo
+    cantidad ← cantidad + 1
 
-    ~ColaLista() {
-        while (!empty()) dequeue();
-    }
+función dequeue():
+    // pre: no está vacía
+    viejoPrimero ← primero
+    valor ← viejoPrimero.dato
+    primero ← primero.siguiente
+    si primero == null:
+        ultimo ← null    // quedó vacía
+    liberar viejoPrimero
+    cantidad ← cantidad - 1
+    devolver valor
 
-    void enqueue(const T& valor) {
-        Nodo<T>* nuevo = new Nodo<T>(valor, nullptr);
-        if (ultimo == nullptr) {
-            primero = ultimo = nuevo;
-        } else {
-            ultimo->siguiente = nuevo;
-            ultimo = nuevo;
-        }
-        cantidad++;
-    }
+función front():
+    // pre: no está vacía
+    devolver primero.dato
 
-    T dequeue() {
-        // precondición: !empty()
-        Nodo<T>* viejoPrimero = primero;
-        T valor = viejoPrimero->dato;
-        primero = primero->siguiente;
-        if (primero == nullptr) {
-            ultimo = nullptr;   // quedó vacía
-        }
-        delete viejoPrimero;
-        cantidad--;
-        return valor;
-    }
-
-    const T& front() const {
-        // precondición: !empty()
-        return primero->dato;
-    }
-
-    bool empty() const { return primero == nullptr; }
-};
+función empty():
+    devolver primero == null
 ```
 
 ## Repaso de complejidades (cola)

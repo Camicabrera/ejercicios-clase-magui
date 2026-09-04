@@ -1,10 +1,10 @@
-Tut 08 – Hashing
+Tutorial 8 – Repaso o Hashing
 ===
 
-> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**  
+> **Ingeniería en Inteligencia Artificial** — **Algoritmos y Estructura de Datos**
 > **2C 2026** · Docente: **Ing. Magali Marijuan**
 
-- [Tut 08 – Hashing](#tut-08--hashing)
+- [Tutorial 8 – Repaso o Hashing](#tutorial-8--repaso-o-hashing)
 - [Objetivos de la clase](#objetivos-de-la-clase)
 - [Idea de tabla de hash](#idea-de-tabla-de-hash)
   - [La función de hash](#la-función-de-hash)
