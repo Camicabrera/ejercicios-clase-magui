@@ -23,6 +23,23 @@ void bubbleSort(std::vector<int>& v)
     //   - Si v[j] > v[j+1], intercambiarlos
     //   - Optimización: si en una pasada no hubo intercambios, terminar
     (void)v;
+    /*
+    int n=v.lenght();
+    for (int i=0;i<n;i++){
+        bool swap= falso;
+        for (int j=0;j<n-i-1;j++){
+            if v[j]>v[j+1]{
+                int med=v[j];
+                v[j]=v[j+1];
+                v[j+1]=v[j];
+                swap=true
+            }
+        }
+        if (!swap){
+            return
+        }
+    }
+   */
 }
 
 // Ejercicio 2 — Insertion Sort
@@ -58,6 +75,11 @@ int busquedaLineal(const std::vector<int>& v, int buscado)
     // Si llegás al final sin encontrarlo, devolver -1.
     (void)v;
     (void)buscado;
+    for (int i=0;i<(int)v.size();i++){
+        if (v[i]==buscado){
+            return i;
+        }
+    }
     return -1;
 }
 
@@ -73,6 +95,20 @@ int busquedaBinaria(const std::vector<int>& v, int buscado)
     // Precondición: el vector está ordenado.
     (void)v;
     (void)buscado;
+    int izq=0;
+    int der= (int)(v.size()-1);
+    while (izq<=der){
+        int medio= izq + (der -izq)/2;
+        if (v[medio]==buscado){
+            return medio;
+        }
+        else if (v[medio]<buscado){
+            izq=medio+1;
+        }
+        else{
+            der= medio-1;
+        }
+    }
     return -1;
 }
 
@@ -88,7 +124,22 @@ int busquedaBinariaRec(const std::vector<int>& v, int buscado, int izq, int der)
     (void)buscado;
     (void)izq;
     (void)der;
-    return -1;
+    if (izq> der){
+        return -1;
+    }
+    int medio= izq + (der-izq)/2;
+    if (v[medio]==buscado){
+        return 0;
+    }
+
+    else if (v[medio]> buscado){
+        return busquedaBinariaRec(v,buscado,izq,medio+1);
+    }
+
+    else {
+        return busquedaBinariaRec(v,buscado,medio-1,der);
+    }
+
 }
 
 // ============================================================================
@@ -101,7 +152,17 @@ bool estaOrdenado(const std::vector<int>& v)
     // TODO: recorrer el vector y verificar que cada elemento sea <= al siguiente.
     // Un vector vacío o con un solo elemento se considera ordenado.
     (void)v;
-    return false;
+    bool flag= false;
+    for (int i=0;i<(int)v.size()-1;i++){
+        if(v[i]<v[i+1]){
+            flag=true;
+        }
+        else{
+            flag=false;
+        }
+    }
+    
+    return flag;
 }
 
 // Propuesto 2 — Encontrar el mínimo
@@ -110,7 +171,13 @@ int indiceMinimo(const std::vector<int>& v)
     // TODO: recorrer el vector buscando el índice del elemento mínimo.
     // Precondición: el vector no está vacío.
     (void)v;
-    return 0;
+    int indice_minimo=0;
+    for (int i=1;i<int(v.size());i++){
+        if (v[i]<v[medio]){
+            medio=i;
+        }
+    }
+    return medio;
 }
 
 // Propuesto 3 — Contar ocurrencias
@@ -119,6 +186,7 @@ int contarOcurrencias(const std::vector<int>& v, int buscado)
     // TODO: contar cuántas veces aparece buscado en el vector.
     (void)v;
     (void)buscado;
+    int contador
     return 0;
 }
 

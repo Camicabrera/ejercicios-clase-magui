@@ -29,6 +29,34 @@ void merge(std::vector<int>& v, int izq, int medio, int der)
     (void)izq;
     (void)medio;
     (void)der;
+    std::vector<int> aux;
+    int i=izq;
+    int j=medio+1;
+
+    while (i<=medio && j<= der){
+        if (v[i]<=v[j]){
+            aux.push_back(v[i]);
+            i++;
+        }
+        else{
+            aux.push_back(v[j]);
+            j++;
+        }
+    }
+
+    while (i<=medio){
+        aux.push_back(v[i]);
+        i++;
+    }
+
+    while(j<=der){
+        aux.push_back(v[j]);
+        j++;
+    }
+
+    for (int k=0;k< (int)aux.size();k++){
+        v[izq+k]=aux[k];
+    }
 }
 
 // Ejercicio 2 — Merge Sort
@@ -44,6 +72,11 @@ void mergeSort(std::vector<int>& v, int izq, int der)
     (void)v;
     (void)izq;
     (void)der;
+    if (izq>=der) return;
+    int medio= izq+(der-izq)/2;
+    mergeSort(v,izq,medio);
+    mergeSort(v,medio+1,der);
+    merge(v,izq,medio,der);
 }
 
 // Ejercicio 3 — Combinar dos vectores ordenados
@@ -54,7 +87,36 @@ std::vector<int> mergeVectoresOrdenados(const std::vector<int>& a, const std::ve
     // de dos sub-rangos de un mismo vector.
     (void)a;
     (void)b;
-    return {};
+    int max;
+    int min;
+    if (a.size()>=b.size()){
+        min= int(b.size());
+        max=int(a.size());
+    }
+    else{
+        min=int(a.size());
+        max=int(b.size());
+    }
+
+    std::vector<int> aux;
+    for (int i=0;i< min;i++){
+        if(a[i]>b[i]){
+            aux.push_back(b[i]);
+        }
+        else{
+            aux.push_back(a[i]);
+        }
+    }
+
+    for (int j=min;j<max;j++){
+        if (a.size()>b.size()){
+            aux.push_back(a[j]);
+        }
+        else{
+            aux.push_back(b[j]);
+        }
+    }
+    return ;
 }
 
 // ============================================================================
@@ -72,10 +134,21 @@ int partition(std::vector<int>& v, int izq, int der)
     //     i e intercambiar v[i] con v[j].
     //   - Al final, intercambiar v[i+1] con v[der] (mover el pivot a su
     //     posición final) y devolver i + 1.
-    (void)v;
-    (void)izq;
-    (void)der;
-    return izq;
+
+    int pivot= v[der];
+    int i= izq-1;
+    for (int j=izq;j<der;j++){
+        if (v[j]<pivot){
+            i++;
+            int inter=v[i];
+            v[i]=v[j];
+            v[j]= inter;
+        }
+    }
+    int inter2= v[i+1];
+    v[i+1]= v[der];
+    v[der]=inter2;
+    return i+1;
 }
 
 // Ejercicio 5 — Quick Sort
