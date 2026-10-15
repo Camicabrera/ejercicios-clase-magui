@@ -23,15 +23,15 @@ void bubbleSort(std::vector<int>& v)
     //   - Si v[j] > v[j+1], intercambiarlos
     //   - Optimización: si en una pasada no hubo intercambios, terminar
     (void)v;
-    /*
-    int n=v.lenght();
+    
+    int n=v.size();
     for (int i=0;i<n;i++){
         bool swap= falso;
         for (int j=0;j<n-i-1;j++){
             if v[j]>v[j+1]{
                 int med=v[j];
                 v[j]=v[j+1];
-                v[j+1]=v[j];
+                v[j+1]=med;
                 swap=true
             }
         }
@@ -39,7 +39,7 @@ void bubbleSort(std::vector<int>& v)
             return
         }
     }
-   */
+   
 }
 
 // Ejercicio 2 — Insertion Sort
@@ -50,6 +50,7 @@ void insertionSort(std::vector<int>& v)
     //   - Para cada elemento desde la posición 1, "insertarlo" en la parte
     //     ya ordenada (posiciones 0 a i-1)
     //   - Desplazar hacia la derecha los elementos mayores
+    
     (void)v;
 }
 
@@ -60,6 +61,20 @@ void selectionSort(std::vector<int>& v)
     // Recordá:
     //   - Para cada posición i, buscar el mínimo en [i, n-1]
     //   - Intercambiar v[i] con v[indiceMinimo]
+    for (int i=0;i<(t_size)v.size();i++){
+        int IndiceMinimo=i;
+
+        for (int j=i+1;j<(t_size)v.size();j++){
+            if (v[i]>v[j]){
+                indiceMinimo=j;
+            }
+        }
+        if (i=! indiceMinimo){
+            int inter=v[i];
+            v[i]=v[j];
+            v[j]=interm;
+        }
+    }
     (void)v;
 }
 

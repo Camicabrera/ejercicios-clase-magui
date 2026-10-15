@@ -159,15 +159,20 @@ void quickSort(std::vector<int>& v, int izq, int der)
     //   - Caso base: si izq >= der, no hay nada que hacer.
     //   - Particionar con p = partition(v, izq, der).
     //   - Llamar recursivamente a quickSort para [izq, p-1] y [p+1, der].
-    (void)v;
-    (void)izq;
-    (void)der;
+    if (izq>= der){
+        return
+    }
+    int p= partition(v,izq,der);
+    quickSort(v,izq,p-1);
+    quickSort(v,p+1,der);
 }
 
 // ============================================================================
 // UNA APLICACIÓN DE MERGE SORT
 // ============================================================================
-
+static Aux(const std::vector<int>& v){
+    int contador=0;
+}
 // Ejercicio 6 — Contar inversiones
 int contarInversiones(const std::vector<int>& v)
 {
@@ -177,6 +182,7 @@ int contarInversiones(const std::vector<int>& v)
     // (podés declararla como función estática arriba de esta, antes de
     // contarInversiones, ya que no hace falta que esté en el .h).
     (void)v;
+    aux(&v)
     return 0;
 }
 

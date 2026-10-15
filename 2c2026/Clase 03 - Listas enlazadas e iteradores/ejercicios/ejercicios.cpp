@@ -124,6 +124,25 @@ bool ListaSimple::eliminar(int valor)
     //   - La lista tiene un solo elemento y es el que hay que eliminar
     (void)valor;
     return false;
+    if (vacia()) return false;
+    if (primero.dato == valor){
+        eliminarPrimero()
+        return true;
+    }
+    actual=primero
+    anterior=nullptr
+    while actual != nullptr and actual.dato!= valor{
+        anterior=actual
+        actual= actual->siguiente
+    }
+    if actual!= nullptr{
+        viejo= actual;
+        anterior->siguiente= viejo->siguiente;
+        delete viejo;
+        return True
+    }
+    return false
+    
 }
 
 // Ejercicio 8 — Obtener elemento en posición i

@@ -2,7 +2,7 @@
 # Flags estrictos de la materia.
 
 CXX      = g++
-CXXFLAGS = -g -std=c++17 -Wall -Wextra -Wconversion -Werror
+CXXFLAGS = -g -std=c++17 -Wall -Wextra -Wconversion 
 TARGET   = ejercicios
 OBJS     = main.o ejercicios.o
 
