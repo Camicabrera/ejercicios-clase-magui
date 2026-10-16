@@ -426,81 +426,13 @@ int main()
     }
 
     // ========================================================================
-    // Ejercicio 14 — contarPalabras
+    // Ejercicio 14 — sonAnagramas
     // ========================================================================
     {
-        std::vector<std::string> palabras = {"el", "gato", "y", "el", "perro", "y", "el", "loro"};
-        std::unordered_map<std::string, int> esperado = {
-            {"el", 3}, {"gato", 1}, {"y", 2}, {"perro", 1}, {"loro", 1}};
-        chequear("Ej14 - contarPalabras (ejemplo)", contarPalabras(palabras) == esperado);
-    }
-    {
-        std::vector<std::string> palabras = {};
-        chequear("Ej14 - contarPalabras (vacío)", contarPalabras(palabras).empty());
-    }
-
-    // ========================================================================
-    // Ejercicio 15 — primerRepetido
-    // ========================================================================
-    {
-        chequear("Ej15 - primerRepetido ({3, 1, 4, 1, 3})", primerRepetido({3, 1, 4, 1, 3}) == 1);
-        chequear("Ej15 - primerRepetido (sin repetidos)", primerRepetido({1, 2, 3}) == -1);
-        chequear("Ej15 - primerRepetido (vacío)", primerRepetido({}) == -1);
-        chequear("Ej15 - primerRepetido (negativos)", primerRepetido({-5, 2, -5}) == -5);
-    }
-
-    // ========================================================================
-    // Ejercicio 16 — dosSuma
-    // ========================================================================
-    {
-        chequear("Ej16 - dosSuma (existe)", dosSuma({2, 7, 11, 15}, 9));
-        chequear("Ej16 - dosSuma (no existe)", !dosSuma({2, 7, 11, 15}, 10));
-        chequear("Ej16 - dosSuma (no usar dos veces el mismo elemento)", !dosSuma({5, 1}, 10));
-        chequear("Ej16 - dosSuma (elemento repetido)", dosSuma({5, 1, 5}, 10));
-        chequear("Ej16 - dosSuma (vacío)", !dosSuma({}, 0));
-    }
-
-    // ========================================================================
-    // Ejercicio 17 — sonAnagramas
-    // ========================================================================
-    {
-        chequear("Ej17 - sonAnagramas (\"roma\", \"amor\")", sonAnagramas("roma", "amor"));
-        chequear("Ej17 - sonAnagramas (distinto largo)", !sonAnagramas("roma", "ramos"));
-        chequear("Ej17 - sonAnagramas (mismas letras, distintas cantidades)", !sonAnagramas("aab", "abb"));
-        chequear("Ej17 - sonAnagramas (vacíos)", sonAnagramas("", ""));
-    }
-
-    // ========================================================================
-    // Propuesto 1 — primerCaracterUnico
-    // ========================================================================
-    {
-        chequear("P1 - primerCaracterUnico (\"abracadabra\")", primerCaracterUnico("abracadabra") == 'c');
-        chequear("P1 - primerCaracterUnico (no hay)", primerCaracterUnico("aabb") == '\0');
-        chequear("P1 - primerCaracterUnico (un solo carácter)", primerCaracterUnico("x") == 'x');
-        chequear("P1 - primerCaracterUnico (vacío)", primerCaracterUnico("") == '\0');
-    }
-
-    // ========================================================================
-    // Propuesto 2 — subarreglosConSumaK
-    // ========================================================================
-    {
-        chequear("P2 - subarreglosConSumaK ({1, 1, 1}, 2)", subarreglosConSumaK({1, 1, 1}, 2) == 2);
-        chequear("P2 - subarreglosConSumaK ({1, 2, 3}, 3)", subarreglosConSumaK({1, 2, 3}, 3) == 2);
-        chequear("P2 - subarreglosConSumaK (con negativos)", subarreglosConSumaK({1, -1, 0}, 0) == 3);
-        chequear("P2 - subarreglosConSumaK (vacío)", subarreglosConSumaK({}, 0) == 0);
-    }
-
-    // ========================================================================
-    // Propuesto 3 — secuenciaConsecutivaMasLarga
-    // ========================================================================
-    {
-        chequear("P3 - secuenciaConsecutivaMasLarga ({100, 4, 200, 1, 3, 2})",
-                 secuenciaConsecutivaMasLarga({100, 4, 200, 1, 3, 2}) == 4);
-        chequear("P3 - secuenciaConsecutivaMasLarga (con repetidos)",
-                 secuenciaConsecutivaMasLarga({0, 3, 7, 2, 5, 8, 4, 6, 0, 1}) == 9);
-        chequear("P3 - secuenciaConsecutivaMasLarga (todos iguales)",
-                 secuenciaConsecutivaMasLarga({5, 5, 5}) == 1);
-        chequear("P3 - secuenciaConsecutivaMasLarga (vacío)", secuenciaConsecutivaMasLarga({}) == 0);
+        chequear("Ej14 - sonAnagramas (\"roma\", \"amor\")", sonAnagramas("roma", "amor"));
+        chequear("Ej14 - sonAnagramas (distinto largo)", !sonAnagramas("roma", "ramos"));
+        chequear("Ej14 - sonAnagramas (mismas letras, distintas cantidades)", !sonAnagramas("aab", "abb"));
+        chequear("Ej14 - sonAnagramas (vacíos)", sonAnagramas("", ""));
     }
 
     // ========================================================================

@@ -2,7 +2,6 @@
 #define EJERCICIOS_H
 
 #include <string>
-#include <unordered_map>
 #include <utility>
 #include <vector>
 
@@ -174,66 +173,15 @@ bool insertarAbierta(TablaAbierta& tabla, const std::string& clave, int valor);
 bool borrarAbierta(TablaAbierta& tabla, const std::string& clave);
 
 // ============================================================================
-// PARTE 4 — USANDO DICCIONARIOS DE LA STL
-// (std::unordered_map / std::unordered_set)
+// PARTE 4 — ANAGRAMAS
 // ============================================================================
 
-// Ejercicio 14 — Contar palabras
-// Devuelve un diccionario palabra -> cantidad de apariciones.
-// Ejemplo: {"a", "b", "a"} -> {"a": 2, "b": 1}
-// Complejidad: O(n) esperado.
-std::unordered_map<std::string, int> contarPalabras(const std::vector<std::string>& palabras);
-
-// Ejercicio 15 — Primer repetido
-// Devuelve el primer elemento que aparece por SEGUNDA vez al recorrer el
-// vector de izquierda a derecha. Si no hay repetidos, devuelve -1.
-// Ejemplo: {3, 1, 4, 1, 3} -> 1 (el 1 se repite antes que el 3).
-// Pista: unordered_set con los elementos ya vistos.
-// Complejidad: O(n) esperado (con dos for anidados sería O(n²)).
-int primerRepetido(const std::vector<int>& v);
-
-// Ejercicio 16 — Dos suma
-// Devuelve true si existen dos posiciones DISTINTAS i, j tales que
-// v[i] + v[j] == objetivo.
-// Pista: para cada x, ¿ya vi a (objetivo - x)?
-// Complejidad: O(n) esperado.
-bool dosSuma(const std::vector<int>& v, int objetivo);
-
-// Ejercicio 17 — Anagramas
+// Ejercicio 14 — Anagramas
 // Devuelve true si `a` y `b` son anagramas (mismas letras con las mismas
 // cantidades, en cualquier orden). Ejemplo: "roma" y "amor".
-// Pista: contá las letras de cada una con un unordered_map<char, int>.
-// Complejidad: O(k) esperado, con k el largo de las palabras.
+// Pista: como hay solo 256 caracteres posibles, alcanza con una tabla de
+// acceso directo: un std::vector<int> de 256 contadores, uno por carácter.
+// Complejidad: O(k), con k el largo de las palabras.
 bool sonAnagramas(const std::string& a, const std::string& b);
-
-// ============================================================================
-// EJERCICIOS PROPUESTOS
-// ============================================================================
-
-// Propuesto 1 — Primer carácter único
-// Devuelve el primer carácter del string que aparece UNA sola vez.
-// Si no hay ninguno, devuelve '\0'.
-// Ejemplo: "abracadabra" -> 'c' (la 'd' también aparece una vez, pero
-// la 'c' viene antes).
-// Complejidad: O(k) esperado.
-char primerCaracterUnico(const std::string& s);
-
-// Propuesto 2 — Subarreglos con suma k
-// Devuelve cuántos subarreglos CONTIGUOS (no vacíos) suman exactamente k.
-// Ejemplo: {1, 1, 1}, k = 2 -> 2 ([1,1] en posiciones 0-1 y 1-2).
-// Pista: sumas prefijas. Si la suma acumulada hasta j es S, todo prefijo
-// anterior con suma S - k da un subarreglo que termina en j y suma k.
-// Guardá en un unordered_map cuántas veces apareció cada suma prefija.
-// Complejidad: O(n) esperado (la fuerza bruta es O(n²)).
-int subarreglosConSumaK(const std::vector<int>& v, int k);
-
-// Propuesto 3 — Secuencia consecutiva más larga
-// Devuelve el largo de la secuencia más larga de números consecutivos que
-// están en el vector (en cualquier orden).
-// Ejemplo: {100, 4, 200, 1, 3, 2} -> 4 (la secuencia 1, 2, 3, 4).
-// Pista: meté todo en un unordered_set. Solo empezá a contar desde un x tal
-// que x - 1 NO esté en el set (es el inicio de una secuencia).
-// Complejidad: O(n) esperado (ordenando sería O(n log n)).
-int secuenciaConsecutivaMasLarga(const std::vector<int>& v);
 
 #endif

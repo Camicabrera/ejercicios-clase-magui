@@ -1,5 +1,4 @@
 #include "ejercicios.h"
-#include <unordered_set>
 
 // ============================================================================
 // Acá va TU código. Cada función tiene una cáscara con un "TODO": borrá el
@@ -209,95 +208,18 @@ bool borrarAbierta(TablaAbierta& tabla, const std::string& clave)
 }
 
 // ============================================================================
-// PARTE 4 — USANDO DICCIONARIOS DE LA STL
+// PARTE 4 — ANAGRAMAS
 // ============================================================================
 
-// Ejercicio 14 — Contar palabras
-std::unordered_map<std::string, int> contarPalabras(const std::vector<std::string>& palabras)
-{
-    // TODO: implementar contarPalabras.
-    // Recordá: conteo[palabra]++ funciona aunque la palabra no esté todavía
-    // (operator[] la crea con valor 0).
-    (void)palabras;
-    return {};
-}
-
-// Ejercicio 15 — Primer repetido
-int primerRepetido(const std::vector<int>& v)
-{
-    // TODO: implementar primerRepetido.
-    // Recordá:
-    //   - Usá un std::unordered_set<int> con los elementos ya vistos.
-    //   - Si el elemento actual ya estaba (vistos.count(x) > 0), es el
-    //     primer repetido.
-    (void)v;
-    return -2;
-}
-
-// Ejercicio 16 — Dos suma
-bool dosSuma(const std::vector<int>& v, int objetivo)
-{
-    // TODO: implementar dosSuma.
-    // Recordá:
-    //   - Recorré el vector guardando en un unordered_set lo que ya viste.
-    //   - Para cada x, si (objetivo - x) ya está en el set, encontraste el par.
-    //   - Insertá x en el set DESPUÉS de preguntar (así no usás el mismo
-    //     elemento dos veces).
-    (void)v;
-    (void)objetivo;
-    return false;
-}
-
-// Ejercicio 17 — Anagramas
+// Ejercicio 14 — Anagramas
 bool sonAnagramas(const std::string& a, const std::string& b)
 {
     // TODO: implementar sonAnagramas.
     // Recordá:
     //   - Si tienen distinto largo, no pueden ser anagramas.
     //   - Sumá 1 por cada letra de `a` y restá 1 por cada letra de `b` en un
-    //     std::unordered_map<char, int>. ¿Qué tiene que pasar al final?
+    //     std::vector<int> de 256 contadores. ¿Qué tiene que pasar al final?
     (void)a;
     (void)b;
     return false;
-}
-
-// ============================================================================
-// EJERCICIOS PROPUESTOS
-// ============================================================================
-
-// Propuesto 1 — Primer carácter único
-char primerCaracterUnico(const std::string& s)
-{
-    // TODO: implementar primerCaracterUnico.
-    // Pista: dos pasadas. En la primera contás, en la segunda buscás el
-    // primero con cuenta 1.
-    (void)s;
-    return '?';
-}
-
-// Propuesto 2 — Subarreglos con suma k
-int subarreglosConSumaK(const std::vector<int>& v, int k)
-{
-    // TODO: implementar subarreglosConSumaK.
-    // Pista:
-    //   - std::unordered_map<int, int> prefijos; prefijos[0] = 1;
-    //   - Llevá la suma acumulada. En cada paso, sumá al total cuántas
-    //     veces apareció (suma - k) como suma prefija, y después registrá
-    //     la suma actual.
-    (void)v;
-    (void)k;
-    return -1;
-}
-
-// Propuesto 3 — Secuencia consecutiva más larga
-int secuenciaConsecutivaMasLarga(const std::vector<int>& v)
-{
-    // TODO: implementar secuenciaConsecutivaMasLarga.
-    // Pista:
-    //   - Meté todos los números en un std::unordered_set<int>.
-    //   - Para cada x del set que sea inicio de secuencia (x - 1 no está),
-    //     contá cuántos x + 1, x + 2, ... están.
-    //   - ¿Por qué esto es O(n) y no O(n²)?
-    (void)v;
-    return -1;
 }

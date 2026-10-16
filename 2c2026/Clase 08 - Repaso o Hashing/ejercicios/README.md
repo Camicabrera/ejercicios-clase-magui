@@ -2,8 +2,7 @@
 
 Cáscara para resolver los ejercicios de la octava clase: funciones de hash
 (y cómo compararlas), tablas de hash implementadas a mano (encadenamiento y
-direccionamiento abierto) y problemas que se resuelven usando diccionarios
-(`std::unordered_map` / `std::unordered_set`).
+direccionamiento abierto) y un problema de conteo (anagramas).
 
 ## Archivos
 
@@ -114,21 +113,11 @@ pares `(clave, valor)`.
 > (`hashLargo`, el índice es el largo de la clave) para forzar colisiones y
 > saber exactamente en qué posición tiene que quedar cada clave.
 
-### Parte 4 — Usando diccionarios de la STL
+### Parte 4 — Anagramas
 
-Problemas que con dos `for` anidados son O(n²) y con una tabla de hash
-pasan a ser O(n) esperado.
-
-- **contarPalabras**: palabra -> cantidad de apariciones.
-- **primerRepetido**: el primer elemento que aparece por segunda vez.
-- **dosSuma**: ¿hay dos elementos que sumen `objetivo`?
 - **sonAnagramas**: ¿tienen las mismas letras con las mismas cantidades?
-
-### Ejercicios propuestos
-
-- **primerCaracterUnico**: primer carácter que aparece una sola vez.
-- **subarreglosConSumaK**: cuántos subarreglos contiguos suman `k` (sumas prefijas + diccionario).
-- **secuenciaConsecutivaMasLarga**: largo de la secuencia de consecutivos más larga.
+  Se resuelve contando con un `std::vector<int>` de 256 posiciones (una por
+  carácter): una tabla de acceso directo, sin colisiones.
 
 > Repasá los apuntes (`Tut-08 - Repaso o Hashing - apuntes.md`) para tener
 > clara la idea de cada estrategia de colisiones antes de implementarla.
