@@ -66,7 +66,7 @@ int contarColisiones(const std::vector<std::string>& claves, int m, FuncionHash 
     //   - Llevá un std::vector<bool> de tamaño m que indique qué buckets ya
     //     están ocupados.
     //   - Si una clave cae en un bucket ocupado, es una colisión.
-    (void)claves;
+    (void)claves;                         
     (void)m;
     (void)funcion;
     return 0;
