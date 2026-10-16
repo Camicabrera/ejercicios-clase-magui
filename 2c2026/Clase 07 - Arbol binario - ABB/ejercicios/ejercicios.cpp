@@ -1,6 +1,9 @@
 #include "ejercicios.h"
 #include <algorithm>  // para std::max
+<<<<<<< HEAD
 #include <climits>
+=======
+>>>>>>> upstream/main
 
 // ============================================================================
 // Acá va TU código. Cada función tiene una cáscara con un "TODO": borrá el
@@ -26,6 +29,7 @@ void preorder(NodoAB<int>* nodo, std::vector<int>& resultado)
     //   - Finalmente recorrer recursivamente el subárbol derecho.
     (void)nodo;
     (void)resultado;
+<<<<<<< HEAD
     if (nodo==nullptr){
         return;
     }
@@ -33,6 +37,8 @@ void preorder(NodoAB<int>* nodo, std::vector<int>& resultado)
     preorder(nodo->izq,resultado);
     preorder(nodo->der,resultado);
 
+=======
+>>>>>>> upstream/main
 }
 
 // Ejercicio 2 — Inorder
@@ -44,6 +50,7 @@ void inorder(NodoAB<int>* nodo, std::vector<int>& resultado)
     //   - Primero recorrer recursivamente el subárbol izquierdo.
     //   - Luego agregar el valor del nodo actual al resultado.
     //   - Finalmente recorrer recursivamente el subárbol derecho.
+<<<<<<< HEAD
     
     if (nodo==nullptr){
         return;
@@ -51,6 +58,10 @@ void inorder(NodoAB<int>* nodo, std::vector<int>& resultado)
     inorder(nodo->izq,resultado);
     resultado.push_back(nodo->valor);
     inorder(nodo->der,resultado);
+=======
+    (void)nodo;
+    (void)resultado;
+>>>>>>> upstream/main
 }
 
 // Ejercicio 3 — Postorder
@@ -64,6 +75,7 @@ void postorder(NodoAB<int>* nodo, std::vector<int>& resultado)
     //   - Finalmente agregar el valor del nodo actual al resultado.
     (void)nodo;
     (void)resultado;
+<<<<<<< HEAD
     if (nodo==nullptr){
         return;
     }
@@ -71,6 +83,8 @@ void postorder(NodoAB<int>* nodo, std::vector<int>& resultado)
     postorder(nodo->der,resultado);
     resultado.push_back(nodo->valor);
     
+=======
+>>>>>>> upstream/main
 }
 
 // ============================================================================
@@ -85,10 +99,15 @@ int altura(NodoAB<int>* nodo)
     //   - Si el nodo es nulo, la altura es 0.
     //   - Si no, la altura es 1 + el máximo entre la altura del subárbol
     //     izquierdo y la altura del subárbol derecho.
+<<<<<<< HEAD
     
     if (nodo==nullptr)
         return 0;
     return 1 + std::max(altura(nodo->der),altura(nodo->izq));
+=======
+    (void)nodo;
+    return 0;
+>>>>>>> upstream/main
 }
 
 // Ejercicio 5 — Tamaño
@@ -99,11 +118,16 @@ int tamanio(NodoAB<int>* nodo)
     //   - Si el nodo es nulo, el tamaño es 0.
     //   - Si no, el tamaño es 1 + tamaño del subárbol izquierdo + tamaño
     //     del subárbol derecho.
+<<<<<<< HEAD
     
     if (nodo==nullptr){
         return 0;
     }
     return 1+tamanio(nodo->izq)+tamanio(nodo->der);
+=======
+    (void)nodo;
+    return 0;
+>>>>>>> upstream/main
 }
 
 // ============================================================================
@@ -119,10 +143,15 @@ NodoAB<int>* buscar(NodoAB<int>* nodo, int valor)
     //   - Si el valor es igual al del nodo, lo encontramos (devolver nodo).
     //   - Si el valor es menor, buscar en el subárbol izquierdo.
     //   - Si el valor es mayor, buscar en el subárbol derecho.
+<<<<<<< HEAD
     if (nodo==nullptr) return nullptr;
     if (nodo->valor ==valor) return nodo;
     if (nodo->valor > valor) return buscar (nodo->izq,valor);
     if (nodo->valor <valor) return buscar(nodo->der,valor);
+=======
+    (void)nodo;
+    (void)valor;
+>>>>>>> upstream/main
     return nullptr;
 }
 
@@ -140,6 +169,7 @@ NodoAB<int>* insertar(NodoAB<int>* nodo, int valor)
     //   - Devolver el nodo (puede ser el nuevo nodo si era nulo).
     (void)nodo;
     (void)valor;
+<<<<<<< HEAD
     if (nodo==nullptr){
         NodoAB<int>* nuevo= new NodoAB<int>(valor);
         return nuevo;
@@ -151,6 +181,9 @@ NodoAB<int>* insertar(NodoAB<int>* nodo, int valor)
         nodo->der=insertar(nodo->der,valor);
     }
     return nodo;
+=======
+    return nullptr;
+>>>>>>> upstream/main
 }
 
 // Ejercicio 8 — Mínimo en ABB
@@ -160,11 +193,16 @@ NodoAB<int>* minimo(NodoAB<int>* nodo)
     // Recordá:
     //   - El mínimo está en el nodo más a la izquierda.
     //   - Mientras haya hijo izquierdo, avanzar hacia la izquierda.
+<<<<<<< HEAD
     if(nodo->izq==nullptr){
         return nodo;
     }
     return minimo(nodo->izq);
 
+=======
+    (void)nodo;
+    return nullptr;
+>>>>>>> upstream/main
 }
 
 // Ejercicio 9 — Máximo en ABB
@@ -174,6 +212,7 @@ NodoAB<int>* maximo(NodoAB<int>* nodo)
     // Recordá:
     //   - El máximo está en el nodo más a la derecha.
     //   - Mientras haya hijo derecho, avanzar hacia la derecha.
+<<<<<<< HEAD
     if (nodo->der ==nullptr){
         return nodo;
     }
@@ -182,6 +221,15 @@ NodoAB<int>* maximo(NodoAB<int>* nodo)
 
 // Ejercicio 10 — Eliminación en ABB
 NodoAB<int>* eliminar(NodoAB<int>* nodo, int valor){
+=======
+    (void)nodo;
+    return nullptr;
+}
+
+// Ejercicio 10 — Eliminación en ABB
+NodoAB<int>* eliminar(NodoAB<int>* nodo, int valor)
+{
+>>>>>>> upstream/main
     // TODO: implementar eliminación en ABB.
     // Recordá los tres casos:
     //   - Caso 1 (hoja): simplemente eliminar el nodo.
@@ -190,6 +238,7 @@ NodoAB<int>* eliminar(NodoAB<int>* nodo, int valor){
     //     inorder (mínimo del subárbol derecho) y luego eliminar el
     //     sucesor recursivamente.
     // No te olvides de liberar la memoria del nodo eliminado con delete.
+<<<<<<< HEAD
     if (nodo == nullptr) return nullptr;   // el valor no estaba
 
     if (valor < nodo->valor){
@@ -227,6 +276,11 @@ bool verificar(NodoAB<int>*nodo, int min, int max){
     return false;
     
     
+=======
+    (void)nodo;
+    (void)valor;
+    return nullptr;
+>>>>>>> upstream/main
 }
 
 // ============================================================================
@@ -240,8 +294,13 @@ bool esABB(NodoAB<int>* nodo)
     // Pista: usá una función auxiliar que reciba cotas (mínimo y máximo
     // permitidos) y verifique recursivamente que cada nodo esté dentro
     // del rango válido. Podés usar INT_MIN e INT_MAX como cotas iniciales.
+<<<<<<< HEAD
     return verificar(nodo, INT_MIN, INT_MAX);
     
+=======
+    (void)nodo;
+    return false;
+>>>>>>> upstream/main
 }
 
 // Propuesto 2 — k-ésimo elemento en inorder
