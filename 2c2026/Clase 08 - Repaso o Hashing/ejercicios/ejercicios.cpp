@@ -24,9 +24,11 @@ int hashSuma(const std::string& clave, int m)
     // Recordá:
     //   - Acumulá en un `unsigned long` la suma de todos los caracteres.
     //   - Al final devolvé suma % m (convertido a int).
-    (void)clave;
-    (void)m;
-    return 0;
+    int suma=0;
+    for (char c: clave){
+        suma+= c;
+    }
+    return suma % m ;
 }
 
 // Ejercicio 2 — Hash polinomial (base 31)
@@ -39,7 +41,11 @@ int hashPolinomial(const std::string& clave, int m)
     //   - Al final devolvé suma % m (convertido a int).
     (void)clave;
     (void)m;
-    return 0;
+    int suma=0;
+    for (char c: clave){
+        suma= suma * 31 +c;
+    }
+    return int (suma % m);
 }
 
 // Ejercicio 3 — Hash djb2 (Dan Bernstein)
@@ -52,7 +58,12 @@ int hashDjb2(const std::string& clave, int m)
     //   - Al final devolvé hash % m (convertido a int).
     (void)clave;
     (void)m;
-    return 0;
+    int hash= 5381;
+    for (char c: clave){
+        hash= hash * 33 + c;
+    }
+
+    return hash % m;
 }
 
 // Ejercicio 4 — Contar colisiones
@@ -68,7 +79,18 @@ int contarColisiones(const std::vector<std::string>& claves, int m, FuncionHash 
     (void)claves;                         
     (void)m;
     (void)funcion;
-    return 0;
+    std::vector<bool> ocupado(m, false);
+    int colision=0;
+    for (const std::string& c: claves){
+        int i=funcion(c,m);
+        if (ocupado[i]== false){
+            ocupado[i]= true; 
+        }
+        else{
+            colision +=1;
+        }
+    }
+    return colision;
 }
 
 // Ejercicio 5 — Bucket más largo
@@ -82,7 +104,19 @@ int bucketMasLargo(const std::vector<std::string>& claves, int m, FuncionHash fu
     (void)claves;
     (void)m;
     (void)funcion;
-    return 0;
+    int max= 0;
+
+    std::vector<int> cantidades (m,0);
+    for (const std::string& c: claves){
+        int i= funcion(c,m);
+        cantidades[i]++;
+
+        if (cantidades[i]> max){
+            max= cantidades[i];
+        }
+    }
+
+    return max;
 }
 
 // ============================================================================
@@ -102,9 +136,25 @@ void insertarEncadenada(TablaHash& tabla, const std::string& clave, int valor)
     //     el valor y terminá.
     //   - Si no está, agregá el par al final de la lista y aumentá
     //     tabla.cantidad.
+
     (void)tabla;
     (void)clave;
     (void)valor;
+    int m= int(tabla.buckets.size());
+    int i = tabla.funcion(clave,m);
+    bool cambio=false;
+
+    for (int j=0;j< int(tabla.buckets[i].size());j++){
+        std::string c=tabla.buckets[i][j].first;
+        if (clave==c){
+            tabla.buckets[i][j].second=valor;
+            cambio=true;
+        }
+    }
+    if (!cambio){
+        tabla.buckets[i].push_back({clave,valor});
+        tabla.cantidad+=1;
+    }
 }
 
 // Ejercicio 7 — Buscar (encadenamiento)
