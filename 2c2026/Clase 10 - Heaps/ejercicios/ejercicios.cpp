@@ -29,7 +29,7 @@ size_t padre(size_t i)
     // TODO: implementar padre.
     // Se espera la posición del padre del elemento i (i > 0).
     (void)i;
-    return 0;
+    return (i-1)/2;
 }
 
 size_t hijoIzq(size_t i)
@@ -37,7 +37,7 @@ size_t hijoIzq(size_t i)
     // TODO: implementar hijoIzq.
     // Se espera la posición del hijo izquierdo del elemento i.
     (void)i;
-    return 0;
+    return 2*i+1;
 }
 
 size_t hijoDer(size_t i)
@@ -45,7 +45,7 @@ size_t hijoDer(size_t i)
     // TODO: implementar hijoDer.
     // Se espera la posición del hijo derecho del elemento i.
     (void)i;
-    return 0;
+    return 2*i+2;
 }
 
 // Ejercicio 2 — Sift-up
@@ -57,6 +57,10 @@ void siftUp(std::vector<int>& v, size_t i)
     // la raíz.
     (void)v;
     (void)i;
+    while (i>0 && v[padre(i)]>v[i]){
+        std::swap(v[padre(i)],v[i]);
+        i= padre(i);
+    }
 }
 
 // Ejercicio 3 — Sift-down
@@ -69,6 +73,27 @@ void siftDown(std::vector<int>& v, size_t i, size_t n)
     (void)v;
     (void)i;
     (void)n;
+    while (true) {
+        size_t menor= i;
+        size_t izq= hijoIzq(i);
+        size_t der= hijoDer(i);
+
+        if (izq<n && v[izq]< v[menor]){
+            menor= izq;
+        }
+
+        if (der<n && v[der]< v[menor]){
+            menor= der;
+        }
+
+        if (menor==i){
+            break;
+        }
+        
+        std:: swap(v[i],v[menor]);
+        i=menor;
+    }
+
 }
 
 // Ejercicio 4 — Insertar
@@ -79,6 +104,7 @@ void insertar(MinHeap& heap, int valor)
     // un min-heap.
     (void)heap;
     (void)valor;
+    heap.datos[]
 }
 
 // Ejercicio 5 — Mínimo
